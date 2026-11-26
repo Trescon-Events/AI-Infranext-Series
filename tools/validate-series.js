@@ -74,8 +74,8 @@ assetMatches.forEach(match => {
   const urlMatch = match.match(/["']([^"']+)["']/);
   if (urlMatch) {
     const rawUrl = urlMatch[1].split('?')[0].split('#')[0];
-    if (rawUrl.startsWith('/assets/')) {
-      const relPath = rawUrl.substring(1); // remove leading slash
+    if (rawUrl.startsWith('/assets/') || rawUrl.startsWith('assets/')) {
+      const relPath = rawUrl.startsWith('/') ? rawUrl.substring(1) : rawUrl;
       if (!checkedAssets.has(relPath)) {
         checkedAssets.add(relPath);
         const diskPath = path.join(rootDir, relPath);
