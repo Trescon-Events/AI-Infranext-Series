@@ -223,12 +223,17 @@
     <!-- Section 3: Editions & Markets -->
     <section class="section-dark" id="editions">
       <div class="container">
-        <div class="row mb-4">
-          <div class="col-lg-10">
-            <h2 class="section-title text-white">Upcoming Editions</h2>
-            <p class="text-white-50 m-0" style="font-size: 16.5px; max-width: 680px;">
+        <div class="row align-items-end mb-4">
+          <div class="col-lg-8">
+            <h2 class="section-title text-white mb-2">Upcoming Editions</h2>
+            <p class="text-white-50 m-0 ain-upcoming-desc" style="font-size: 16.5px;">
               Executive summits positioned in high-velocity regional compute hubs across Southeast Asia.
             </p>
+          </div>
+          <div class="col-lg-4 text-lg-right mt-3 mt-lg-0">
+            <div class="ain-market-pills-row" id="marketPills">
+              <!-- Tabs populated by JS -->
+            </div>
           </div>
         </div>
 
@@ -739,7 +744,7 @@
     // 1. Data Store: Regional Editions (2 Active Events)
     var EDITIONS_DATA = [
       {
-        tabLabel: 'Indonesia (Inaugural)',
+        tabLabel: 'Indonesia',
         lockupName: 'AI InfraNext | Indonesia 2026',
         brandLine: "Indonesia's AI build, decided here",
         dates: '24–25 Nov 2026',
@@ -774,6 +779,23 @@
 
     // 2. Render and Auto-Advance Editions (Every 5 seconds)
     function initEditionsStage() {
+      var marketPillsContainer = document.getElementById('marketPills');
+      if (marketPillsContainer) {
+        marketPillsContainer.innerHTML = '';
+        EDITIONS_DATA.forEach(function (m, idx) {
+          var pill = document.createElement('button');
+          pill.type = 'button';
+          pill.className = 'ain-market-pill' + (idx === currentMarketIdx ? ' active' : '');
+          pill.textContent = m.tabLabel;
+          pill.addEventListener('click', function () {
+            currentMarketIdx = idx;
+            renderActiveEdition();
+            startEditionAutoAdvance();
+          });
+          marketPillsContainer.appendChild(pill);
+        });
+      }
+
       var stage = document.getElementById('editionStage');
       if (stage) {
         stage.addEventListener('mouseenter', function () { isEditionHovered = true; });
@@ -782,6 +804,17 @@
 
       renderActiveEdition();
       startEditionAutoAdvance();
+    }
+
+    function updateMarketPillSelection() {
+      var pills = document.querySelectorAll('.ain-market-pill');
+      pills.forEach(function (p, idx) {
+        if (idx === currentMarketIdx) {
+          p.classList.add('active');
+        } else {
+          p.classList.remove('active');
+        }
+      });
     }
 
     function startEditionAutoAdvance() {
@@ -797,6 +830,8 @@
     function renderActiveEdition() {
       var edition = EDITIONS_DATA[currentMarketIdx];
       if (!edition) return;
+
+      updateMarketPillSelection();
 
       var stage = document.getElementById('editionStage');
       if (stage) {

@@ -720,11 +720,27 @@ a, a:hover, a:focus, a:active {
   border-radius: var(--radius-pill);
 }
 
-.ain-market-pills {
+.ain-market-pills,
+.ain-market-pills-row {
   display: flex;
   gap: 10px;
-  margin-bottom: 28px;
   flex-wrap: wrap;
+}
+
+.ain-market-pills-row {
+  justify-content: flex-end;
+}
+
+@media (max-width: 991px) {
+  .ain-market-pills-row {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 992px) {
+  .ain-upcoming-desc {
+    white-space: nowrap;
+  }
 }
 
 .ain-market-pill {
