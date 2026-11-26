@@ -1551,6 +1551,29 @@ a, a:hover, a:focus, a:active {
   animation-play-state: paused;
 }
 
+.partner-marquee-item {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  user-select: none;
+}
+
+.partner-marquee-logo {
+  height: 84px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.partner-marquee-item:hover .partner-marquee-logo {
+  transform: scale(1.06);
+}
+
 .ain-partner-logo-card {
   height: 72px;
   min-width: 150px;
