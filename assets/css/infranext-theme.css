@@ -117,7 +117,7 @@ a, a:hover, a:focus, a:active {
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-top: 12px;
+  margin-top: 24px;
 }
 
 /* Base Buttons / CTAs */

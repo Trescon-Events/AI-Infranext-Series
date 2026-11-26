@@ -234,11 +234,6 @@
           </div>
         </div>
 
-        <!-- Market selector pills -->
-        <div class="ain-market-pills" id="marketPills">
-          <!-- Market pills populated by JS -->
-        </div>
-
         <!-- Interactive Editions Stage -->
         <div class="ain-edition-stage" id="editionStage">
           <div class="ain-edition-info">
@@ -261,17 +256,6 @@
               <p class="ain-edition-desc" id="editionDesc">
                 Convening national policymakers, hyperscalers, data centre developers, and enterprise CIOs to accelerate Indonesia's digital sovereign infrastructure and enterprise AI readiness.
               </p>
-            </div>
-
-            <div class="ain-edition-stats-box" id="editionStatsBox">
-              <!-- Capacity metrics with explicit status labels and plain-text sources -->
-              <div class="ain-edition-stat-item">
-                <div class="d-flex align-items-center">
-                  <span class="ain-stat-val" id="statVal1">2,000 MW</span>
-                  <span class="ain-stat-tag tag-planned" id="statTag1">Planned</span>
-                </div>
-                <div class="ain-stat-cite" id="statCite1">Target national digital infrastructure pipeline (Ministry of Communication and Informatics)</div>
-              </div>
             </div>
 
             <div class="ain-edition-actions">
@@ -827,38 +811,29 @@
     ];
 
     var currentMarketIdx = 0;
+    var editionTimer = null;
+    var isEditionHovered = false;
 
-    // 2. Render Market Pills
+    // 2. Render and Auto-Advance Editions (Every 5 seconds)
     function initEditionsStage() {
-      var marketPillsContainer = document.getElementById('marketPills');
-      if (!marketPillsContainer) return;
-
-      marketPillsContainer.innerHTML = '';
-      EDITIONS_DATA.forEach(function (m, idx) {
-        var pill = document.createElement('button');
-        pill.type = 'button';
-        pill.className = 'ain-market-pill' + (idx === currentMarketIdx ? ' active' : '');
-        pill.textContent = m.tabLabel;
-        pill.addEventListener('click', function () {
-          currentMarketIdx = idx;
-          updateMarketPillSelection();
-          renderActiveEdition();
-        });
-        marketPillsContainer.appendChild(pill);
-      });
+      var stage = document.getElementById('editionStage');
+      if (stage) {
+        stage.addEventListener('mouseenter', function () { isEditionHovered = true; });
+        stage.addEventListener('mouseleave', function () { isEditionHovered = false; });
+      }
 
       renderActiveEdition();
+      startEditionAutoAdvance();
     }
 
-    function updateMarketPillSelection() {
-      var pills = document.querySelectorAll('.ain-market-pill');
-      pills.forEach(function (p, idx) {
-        if (idx === currentMarketIdx) {
-          p.classList.add('active');
-        } else {
-          p.classList.remove('active');
+    function startEditionAutoAdvance() {
+      if (editionTimer) clearInterval(editionTimer);
+      editionTimer = setInterval(function () {
+        if (!isEditionHovered) {
+          currentMarketIdx = (currentMarketIdx + 1) % EDITIONS_DATA.length;
+          renderActiveEdition();
         }
-      });
+      }, 5000);
     }
 
     function renderActiveEdition() {
@@ -878,19 +853,6 @@
         document.getElementById('editionFormat').textContent = edition.format;
         document.getElementById('editionDesc').textContent = edition.desc;
         document.getElementById('editionVisualImg').src = edition.bgImage;
-
-        var statsBox = document.getElementById('editionStatsBox');
-        statsBox.innerHTML = '';
-        edition.stats.forEach(function (st) {
-          var item = document.createElement('div');
-          item.className = 'ain-edition-stat-item';
-          item.innerHTML = '<div class="d-flex align-items-center">' +
-                           '<span class="ain-stat-val">' + st.val + '</span>' +
-                           '<span class="ain-stat-tag ' + st.tagClass + '">' + st.tagClass.replace('tag-', '') + '</span>' +
-                           '</div>' +
-                           '<div class="ain-stat-cite">' + st.cite + '</div>';
-          statsBox.appendChild(item);
-        });
 
         var siteBtn = document.getElementById('editionSiteBtn');
         if (edition.websiteUrl && edition.websiteUrl.length > 0) {
@@ -925,14 +887,13 @@
         if (stage) {
           stage.style.opacity = '1';
         }
-      }, 150);
+      }, 180);
     }
 
     window.selectMarket = function (marketName) {
       EDITIONS_DATA.forEach(function (m, idx) {
         if (m.tabLabel.toLowerCase().indexOf(marketName.toLowerCase()) !== -1 || m.city.toLowerCase().indexOf(marketName.toLowerCase()) !== -1) {
           currentMarketIdx = idx;
-          updateMarketPillSelection();
           renderActiveEdition();
         }
       });
