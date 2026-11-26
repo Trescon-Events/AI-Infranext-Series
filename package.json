@@ -1,0 +1,14 @@
+{
+  "name": "aiinfranext-series",
+  "version": "1.0.0",
+  "description": "AI InfraNext Global Series Website",
+  "main": "index.html",
+  "scripts": {
+    "validate": "node tools/validate-series.js",
+    "build": "node tools/build-series.js",
+    "dev": "npx serve ."
+  },
+  "author": "Trescon",
+  "license": "UNLICENSED",
+  "private": true
+}

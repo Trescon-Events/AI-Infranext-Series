@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <title>AI InfraNext – The Infrastructure Beneath Enterprise AI | Executive Summit Series</title>
+  <meta name="description" content="AI InfraNext is an executive summit series dedicated to the infrastructure layer beneath enterprise AI: compute, cloud, data centres, power, connectivity, security, and capital. Organised by Trescon." />
+  <meta name="keywords" content="AI InfraNext, AI infrastructure, enterprise AI, data centres, AI compute, GPU clusters, neocloud, liquid cooling, sovereign cloud, digital infrastructure, Trescon" />
+
+  <!-- Open Graph & Social Card -->
+  <meta property="og:title" content="AI InfraNext | Where AI Infrastructure Meets Enterprise Demand" />
+  <meta property="og:site_name" content="AI InfraNext" />
+  <meta property="og:url" content="https://aiinfranext.com/" />
+  <meta property="og:description" content="AI InfraNext is an executive summit series dedicated to the infrastructure layer beneath enterprise AI: compute, cloud, data centres, power, connectivity, security, and capital. Organised by Trescon." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aiinfranext.com/assets/img/og-aiinfranext.jpg?v=1" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://aiinfranext.com/assets/img/og-aiinfranext.jpg?v=1" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/img/favicon.svg?v=1" type="image/svg+xml" />
+  <link rel="icon" href="/assets/img/favicon-32.svg?v=1" type="image/svg+xml" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/assets/img/favicon-32.svg?v=1" />
+
+  <!-- Google Fonts: Space Grotesk (Headlines), Plus Jakarta Sans (Body/UI), JetBrains Mono (Data/Labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/assets/css/infranext-theme.css" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://tresconglobal.com/#organization",
+        "name": "Trescon",
+        "url": "https://tresconglobal.com/",
+        "logo": "https://aiinfranext.com/assets/img/brand/trescon-logo.svg"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aiinfranext.com/#website",
+        "url": "https://aiinfranext.com/",
+        "name": "AI InfraNext",
+        "publisher": { "@id": "https://tresconglobal.com/#organization" },
+        "description": "The infrastructure beneath enterprise AI"
+      },
+      {
+        "@type": "EventSeries",
+        "@id": "https://aiinfranext.com/#series",
+        "name": "AI InfraNext",
+        "description": "Executive summit series dedicated to the infrastructure layer beneath enterprise AI.",
+        "organizer": { "@id": "https://tresconglobal.com/#organization" },
+        "url": "https://aiinfranext.com/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Top Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Section 0: Floating Navbar -->
+  <header class="ain-navbar-wrap" id="navbar-top">
+    <nav class="ain-navbar" aria-label="Main Navigation">
+      <a href="#hero" class="ain-nav-logo" aria-label="AI InfraNext Home">
+        <img src="/assets/img/brand/horizontal-dark-bg.svg" alt="AI InfraNext" />
+      </a>
+      <ul class="ain-nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">Overview</a></li>
+        <li><a href="#editions">Editions</a></li>
+        <li><a href="#ecosystem">Ecosystem</a></li>
+        <li><a href="#why-sponsor">Why Sponsor</a></li>
+      </ul>
+      <div class="ain-nav-ctas">
+        <a href="#why-sponsor" class="btn-ain-secondary" style="padding: 8px 16px; font-size: 13.5px;">Why Sponsor</a>
+        <a href="#register" class="btn-ain-primary" style="padding: 8px 18px; font-size: 13.5px;">Enquire Now</a>
+      </div>
+      <button class="ain-hamburger" id="navToggle" aria-label="Toggle navigation menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="ain-mobile-drawer" id="mobileDrawer">
+    <div class="ain-drawer-header">
+      <img src="/assets/img/brand/horizontal-dark-bg.svg" alt="AI InfraNext" style="height: 32px;" />
+      <button class="ain-hamburger" id="navClose" aria-label="Close navigation menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <ul class="ain-drawer-links">
+      <li><a href="#hero" class="drawer-link">Home</a></li>
+      <li><a href="#about" class="drawer-link">Overview</a></li>
+      <li><a href="#editions" class="drawer-link">Regional Editions</a></li>
+      <li><a href="#ecosystem" class="drawer-link">Who Is In The Room</a></li>
+      <li><a href="#why-sponsor" class="drawer-link">Why Sponsor</a></li>
+      <li><a href="#organiser" class="drawer-link">About Trescon</a></li>
+    </ul>
+    <div class="ain-drawer-ctas">
+      <a href="#why-sponsor" class="btn-ain-secondary drawer-link" style="width: 100%;">Why Sponsor</a>
+      <a href="#register" class="btn-ain-primary drawer-link" style="width: 100%;">Enquire Now</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Section 1: Hero Sticky 2-Step Slow-Motion Scroll-Reveal -->
+    <section class="ain-hero-scroll-track" id="hero">
+      <div class="ain-hero-sticky-stage">
+        <div class="ain-hero-media-wrapper">
+          <video class="ain-hero-video" id="ainHeroVideo" autoplay loop muted playsinline poster="/assets/img/banner/ain-hero-poster.jpg">
+            <source src="/assets/img/banner/ain-hero-reel.mp4" type="video/mp4" />
+          </video>
+          <div class="ain-hero-scrim"></div>
+        </div>
+
+        <div class="ain-hero-content">
+          <div class="ain-hero-mark">
+            <img src="/assets/img/brand/horizontal-dark-bg.svg" alt="AI InfraNext" />
+          </div>
+
+          <div class="ain-hero-step1">
+            <h1 class="ain-hero-descriptor">
+              The infrastructure beneath <span>enterprise AI</span>
+            </h1>
+            <p class="ain-hero-proposition">
+              Where AI infrastructure meets enterprise demand
+            </p>
+          </div>
+
+          <div class="ain-hero-step2">
+            <div class="ain-hero-ctas">
+              <a href="#editions" class="btn-ain-primary">Explore Editions</a>
+              <a href="#why-sponsor" class="btn-ain-secondary">Sponsor Series</a>
+            </div>
+            <div>
+              <div class="ain-hero-quick-pill">
+                <span>Inaugural Edition:</span>
+                <b>Indonesia · 24–25 Nov 2026</b>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ain-hero-scroll-hint">
+          <span>Scroll to explore</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: The Execution Layer -->
+    <section class="section-light with-grid" id="about">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-10">
+            <span class="eyebrow on-light">THE EXECUTION LAYER</span>
+            <h2 class="section-title" style="color: var(--navy);">From announced to operational</h2>
+            <p class="section-desc mx-auto" style="color: var(--grey);">
+              Not a general AI adoption conference. Not a data centre facilities trade show. AI InfraNext is the dedicated executive stage where enterprise demand for artificial intelligence meets the physical and digital infrastructure required to run it.
+            </p>
+          </div>
+        </div>
+
+        <div class="ain-thesis-card">
+          <div class="row align-items-center">
+            <div class="col-lg-7">
+              <h3 style="font-size: 24px; color: var(--navy); margin-bottom: 12px;">Bridging the gap between AI ambition and physical capability</h3>
+              <p style="color: var(--ink-secondary); font-size: 15.5px; line-height: 1.7; margin: 0;">
+                As generative AI, autonomous agents, and foundation models scale into core enterprise workflows, the bottleneck shifts from algorithms to physical execution: high-density power access, liquid-cooled data halls, low-latency interconnects, and sovereign data boundaries. AI InfraNext brings together the executive leaders who build, power, secure, and finance this mission-critical foundation.
+              </p>
+            </div>
+            <div class="col-lg-5 mt-4 mt-lg-0">
+              <div class="ain-thesis-contrast" style="margin: 0; padding: 0; border: none;">
+                <div class="ain-contrast-item" style="padding-left: 24px; margin-bottom: 16px;">
+                  <span class="icon" style="color: #A33333; font-weight: 700;">✕</span>
+                  <b style="display: block; font-size: 14px; color: var(--navy);">Not Generic AI Use-Cases</b>
+                  <span style="font-size: 13px; color: var(--grey);">We do not debate prompts or superficial demos.</span>
+                </div>
+                <div class="ain-contrast-item" style="padding-left: 24px;">
+                  <span class="icon" style="color: var(--green); font-weight: 700;">✓</span>
+                  <b style="display: block; font-size: 14px; color: var(--navy);">Operational Infrastructure</b>
+                  <span style="font-size: 13px; color: var(--grey);">Power grids, GPU factories, neoclouds, and sovereign fabric.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Benchmark Cards -->
+        <div class="ain-benchmark-grid">
+          <div class="ain-benchmark-card">
+            <div class="ain-benchmark-num">800+</div>
+            <div class="ain-benchmark-label">Benchmark Decision-Makers</div>
+            <p class="ain-benchmark-sub">Senior enterprise buyers, operators, and allocators convened across regional markets.</p>
+          </div>
+          <div class="ain-benchmark-card">
+            <div class="ain-benchmark-num">40–50</div>
+            <div class="ain-benchmark-label">Curated Leaders per Room</div>
+            <p class="ain-benchmark-sub">Closed-door boardroom format ensuring high-density peer dialogue.</p>
+          </div>
+          <div class="ain-benchmark-card">
+            <div class="ain-benchmark-num">4</div>
+            <div class="ain-benchmark-label">Core Content Pillars</div>
+            <p class="ain-benchmark-sub">Covering compute, data centre facilities, sovereign cloud, and secure production.</p>
+          </div>
+          <div class="ain-benchmark-card">
+            <div class="ain-benchmark-num">5</div>
+            <div class="ain-benchmark-label">Cross-Cutting Themes</div>
+            <p class="ain-benchmark-sub">Unifying capital, regulation, power sustainability, TCO, and talent.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Editions & Markets -->
+    <section class="section-dark" id="editions">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-lg-10">
+            <span class="eyebrow on-dark">REGIONAL EDITIONS</span>
+            <h2 class="section-title text-white">Where infrastructure is decided</h2>
+            <p class="text-white-50 m-0" style="font-size: 16.5px; max-width: 680px;">
+              Executive summits positioned in high-velocity regional compute hubs across Southeast Asia.
+            </p>
+          </div>
+        </div>
+
+        <!-- Market selector pills -->
+        <div class="ain-market-pills" id="marketPills">
+          <!-- Market pills populated by JS -->
+        </div>
+
+        <!-- Interactive Editions Stage -->
+        <div class="ain-edition-stage" id="editionStage">
+          <div class="ain-edition-info">
+            <div>
+              <div class="ain-edition-lockup" id="editionLockup">AI InfraNext | Indonesia 2026</div>
+              <div class="ain-edition-brandline" id="editionBrandline">Indonesia's AI build, decided here</div>
+              <div class="ain-edition-meta-pills" id="editionMetaPills">
+                <span class="ain-edition-meta-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <span id="editionDates">24–25 Nov 2026</span>
+                </span>
+                <span class="ain-edition-meta-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  <span id="editionCity">Jakarta, Indonesia</span>
+                </span>
+                <span class="ain-edition-meta-pill">
+                  <span id="editionFormat">Standalone · Inaugural Edition</span>
+                </span>
+              </div>
+              <p class="ain-edition-desc" id="editionDesc">
+                Convening national policymakers, hyperscalers, data centre developers, and enterprise CIOs to accelerate Indonesia's digital sovereign infrastructure and enterprise AI readiness.
+              </p>
+            </div>
+
+            <div class="ain-edition-stats-box" id="editionStatsBox">
+              <!-- Capacity metrics with explicit status labels and plain-text sources -->
+              <div class="ain-edition-stat-item">
+                <div class="d-flex align-items-center">
+                  <span class="ain-stat-val" id="statVal1">2,000 MW</span>
+                  <span class="ain-stat-tag tag-planned" id="statTag1">Planned</span>
+                </div>
+                <div class="ain-stat-cite" id="statCite1">Target national digital infrastructure pipeline (Ministry of Communication and Informatics)</div>
+              </div>
+            </div>
+
+            <div class="ain-edition-actions">
+              <a href="/indonesia/" class="btn-ain-primary" id="editionSiteBtn">Visit Edition Site</a>
+              <a href="#register" class="btn-ain-secondary" id="editionEnquireBtn">Enquire Now</a>
+            </div>
+          </div>
+
+          <div class="ain-edition-visual">
+            <img src="/assets/img/editions/jakarta-skyline.jpg" alt="Edition Skyline" id="editionVisualImg" />
+            <div class="ain-edition-visual-scrim"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Who Is In The Room -->
+    <section class="section-dark" id="ecosystem" style="border-top: 1px solid rgba(159, 196, 224, 0.16);">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-lg-9">
+            <span class="eyebrow on-dark">WHO IS IN THE ROOM</span>
+            <h2 class="section-title text-white">The five constituencies building the infrastructure layer</h2>
+            <p class="text-white-50 mx-auto" style="font-size: 16.5px; max-width: 720px;">
+              Convening the complete decision-making chain required to finance, build, and operate enterprise AI infrastructure.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5 Constituencies Slider (Big Cards, 3 in a row) -->
+        <div class="ain-constituencies-slider-wrap">
+          <div class="ain-constituencies-slider-viewport" id="constituencyViewport">
+            <div class="ain-constituencies-track" id="constituencyTrack">
+              <!-- Slide 1 -->
+              <div class="ain-constituency-slide">
+                <div class="ain-constituency-card">
+                  <div class="ain-constituency-img-wrap">
+                    <img src="/assets/img/constituencies/constituency-01-enterprise-buyers.webp" alt="Enterprise Buyers" class="ain-constituency-img" />
+                    <span class="ain-constituency-badge">CONSTITUENCY 01</span>
+                  </div>
+                  <div class="ain-constituency-body">
+                    <h4 class="ain-constituency-title">Enterprise Buyers</h4>
+                    <p class="ain-constituency-profiles">CIOs, CTOs, Chief AI Officers, Heads of Digital Infrastructure, Chief Information Security Officers from BFSI, Telco, Energy, Healthcare, and Conglomerates.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="ain-constituency-slide">
+                <div class="ain-constituency-card">
+                  <div class="ain-constituency-img-wrap">
+                    <img src="/assets/img/constituencies/constituency-02-hyperscalers-cloud.webp" alt="Hyperscalers and Neoclouds" class="ain-constituency-img" />
+                    <span class="ain-constituency-badge">CONSTITUENCY 02</span>
+                  </div>
+                  <div class="ain-constituency-body">
+                    <h4 class="ain-constituency-title">Hyperscalers &amp; Neoclouds</h4>
+                    <p class="ain-constituency-profiles">Global cloud service providers, specialized GPU cloud operators, foundation model platforms, and high-performance compute aggregators.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="ain-constituency-slide">
+                <div class="ain-constituency-card">
+                  <div class="ain-constituency-img-wrap">
+                    <img src="/assets/img/constituencies/constituency-03-datacenter-operators.webp" alt="Data Centre and Network Operators" class="ain-constituency-img" />
+                    <span class="ain-constituency-badge">CONSTITUENCY 03</span>
+                  </div>
+                  <div class="ain-constituency-body">
+                    <h4 class="ain-constituency-title">Data Centre Operators</h4>
+                    <p class="ain-constituency-profiles">Wholesale &amp; colocation operators, telecom carriers, dark fibre providers, cooling systems engineers, and electrical equipment manufacturers.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4 -->
+              <div class="ain-constituency-slide">
+                <div class="ain-constituency-card">
+                  <div class="ain-constituency-img-wrap">
+                    <img src="/assets/img/constituencies/constituency-04-government-regulators.webp" alt="Government and Regulators" class="ain-constituency-img" />
+                    <span class="ain-constituency-badge">CONSTITUENCY 04</span>
+                  </div>
+                  <div class="ain-constituency-body">
+                    <h4 class="ain-constituency-title">Government &amp; Regulators</h4>
+                    <p class="ain-constituency-profiles">Ministries of digital economy, national AI councils, data protection authorities, state grid utilities, and investment promotion agencies.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 5 -->
+              <div class="ain-constituency-slide">
+                <div class="ain-constituency-card">
+                  <div class="ain-constituency-img-wrap">
+                    <img src="/assets/img/constituencies/constituency-05-infrastructure-capital.webp" alt="Infrastructure Capital" class="ain-constituency-img" />
+                    <span class="ain-constituency-badge">CONSTITUENCY 05</span>
+                  </div>
+                  <div class="ain-constituency-body">
+                    <h4 class="ain-constituency-title">Infrastructure Capital</h4>
+                    <p class="ain-constituency-profiles">Digital infrastructure private equity, sovereign wealth funds, project finance bankers, institutional real estate investors, and venture debt providers.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider Controls -->
+          <div class="ain-slider-controls">
+            <button class="ain-slider-arrow" id="constituencyPrev" aria-label="Previous Slide">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="ain-slider-dots" id="constituencyDots"></div>
+            <button class="ain-slider-arrow" id="constituencyNext" aria-label="Next Slide">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Two-Door Attendance Model -->
+        <div class="ain-twodoor-box">
+          <div class="text-center">
+            <span class="eyebrow on-dark">ADMISSION ARCHITECTURE</span>
+            <h3 style="font-size: 24px; color: #FFFFFF; margin-bottom: 8px;">The Two-Door Attendance Model</h3>
+            <p style="color: #C9DCEC; font-size: 15px; max-width: 680px; margin: 0 auto;">
+              To ensure commercial balance and substantive executive discussions, participation is strictly structured across two distinct qualification pathways.
+            </p>
+          </div>
+
+          <div class="ain-twodoor-grid">
+            <div class="ain-door-card">
+              <div>
+                <span class="ain-door-badge badge-invitation">Door 1: By Invitation &amp; Qualification</span>
+                <h4 class="ain-door-title">Delegate Pass</h4>
+                <p class="ain-door-desc">
+                  Reserved strictly for qualified senior enterprise buyers, public-sector digital leaders, and accredited infrastructure-capital allocators classified by institutional mandate. Complimentary registration is extended following formal committee qualification.
+                </p>
+              </div>
+              <div>
+                <a href="#register" class="btn-ain-secondary" style="width: 100%; border-color: var(--tint);">Check Qualification Criteria</a>
+              </div>
+            </div>
+
+            <div class="ain-door-card">
+              <div>
+                <span class="ain-door-badge badge-business">Door 2: Commercial Access</span>
+                <h4 class="ain-door-title">Business Pass</h4>
+                <p class="ain-door-desc">
+                  Designed for technology vendors, cloud providers, software vendors, system integrators, and management consultants seeking full conference access, plenary sessions, exhibition floor access, and official networking functions.
+                </p>
+              </div>
+              <div>
+                <a href="#why-sponsor" class="btn-ain-primary" style="width: 100%;">Explore Commercial Options</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Sponsorship Opportunities -->
+    <section class="section-light" id="why-sponsor">
+      <div class="container">
+        <div class="row align-items-end mb-5">
+          <div class="col-lg-8">
+            <span class="eyebrow on-light">COMMERCIAL IMPACT</span>
+            <h2 class="section-title" style="color: var(--navy);">Why industry leaders partner with AI InfraNext</h2>
+            <p class="section-desc mb-0" style="color: var(--grey);">
+              Engineered commercial formats that deliver qualified enterprise buyer access, stage authority, and closed-door relationship building.
+            </p>
+          </div>
+          <div class="col-lg-4 text-lg-right mt-3 mt-lg-0">
+            <a href="#register" class="btn-ain-primary">Request Series Prospectus</a>
+          </div>
+        </div>
+
+        <div class="ain-sponsor-explorer">
+          <!-- Accordion Controls -->
+          <div class="ain-accordion-list" id="sponsorAccordion">
+            <div class="ain-accordion-item active" data-idx="0">
+              <button class="ain-accordion-header" type="button">
+                <div class="ain-acc-title-wrap">
+                  <span class="ain-acc-num">01</span>
+                  <h3 class="ain-acc-title">Main-Stage Authority</h3>
+                </div>
+                <span class="ain-acc-icon">▼</span>
+              </button>
+              <div class="ain-accordion-body">
+                Deliver keynote vision presentations, chair plenary architecture debates, and position your executive leadership before the full regional delegation of enterprise decision-makers.
+              </div>
+            </div>
+
+            <div class="ain-accordion-item" data-idx="1">
+              <button class="ain-accordion-header" type="button">
+                <div class="ain-acc-title-wrap">
+                  <span class="ain-acc-num">02</span>
+                  <h3 class="ain-acc-title">Closed-Door CXO Boardrooms</h3>
+                </div>
+                <span class="ain-acc-icon">▼</span>
+              </button>
+              <div class="ain-accordion-body">
+                Host intimate, Chatham House discussions with 12–15 pre-qualified enterprise buyers focused on mission-critical architecture, workload migration, and infrastructure procurement.
+              </div>
+            </div>
+
+            <div class="ain-accordion-item" data-idx="2">
+              <button class="ain-accordion-header" type="button">
+                <div class="ain-acc-title-wrap">
+                  <span class="ain-acc-num">03</span>
+                  <h3 class="ain-acc-title">Targeted Wishlist Invitations</h3>
+                </div>
+                <span class="ain-acc-icon">▼</span>
+              </button>
+              <div class="ain-accordion-body">
+                Submit named enterprise accounts to our dedicated VIP delegate research team for proactive pre-event engagement and verified meeting scheduling, subject to individual consent.
+              </div>
+            </div>
+
+            <div class="ain-accordion-item" data-idx="3">
+              <button class="ain-accordion-header" type="button">
+                <div class="ain-acc-title-wrap">
+                  <span class="ain-acc-num">04</span>
+                  <h3 class="ain-acc-title">Press &amp; Executive Interviews</h3>
+                </div>
+                <span class="ain-acc-icon">▼</span>
+              </button>
+              <div class="ain-accordion-body">
+                Amplify corporate announcements through dedicated media briefing sessions, on-site broadcast studio interviews, and syndicated post-event executive whitepapers.
+              </div>
+            </div>
+
+            <div class="ain-accordion-item" data-idx="4">
+              <button class="ain-accordion-header" type="button">
+                <div class="ain-acc-title-wrap">
+                  <span class="ain-acc-num">05</span>
+                  <h3 class="ain-acc-title">Curated Technology Showcase</h3>
+                </div>
+                <span class="ain-acc-icon">▼</span>
+              </button>
+              <div class="ain-accordion-body">
+                Showcase hardware chassis, liquid cooling systems, sovereign cloud platforms, and AI inference workstations in an architecturally premium environment.
+              </div>
+            </div>
+
+            <div class="ain-accordion-item" data-idx="5">
+              <button class="ain-accordion-header" type="button">
+                <div class="ain-acc-title-wrap">
+                  <span class="ain-acc-num">06</span>
+                  <h3 class="ain-acc-title">Pre/Post-Event Amplification</h3>
+                </div>
+                <span class="ain-acc-icon">▼</span>
+              </button>
+              <div class="ain-accordion-body">
+                Drive sustained thought leadership through dedicated digital marketing campaigns, editorial features, and community distribution across consented executive attendees.
+              </div>
+            </div>
+          </div>
+
+          <!-- Synchronized Visual Stage -->
+          <div class="ain-sponsor-stage" id="sponsorStage">
+            <img src="/assets/img/highlights/sponsorship-01.jpg" alt="Sponsorship Stage" class="ain-sponsor-stage-img" id="sponsorStageImg" />
+            <div class="ain-sponsor-stage-body">
+              <h3 class="ain-sponsor-stage-title" id="sponsorStageTitle">Main-Stage Authority</h3>
+              <p class="ain-sponsor-stage-desc" id="sponsorStageDesc">
+                Deliver keynote vision presentations, chair plenary architecture debates, and position your executive leadership before the full regional delegation.
+              </p>
+              <a href="#register" class="btn-ain-secondary" style="border-color: var(--tint); font-size: 13.5px;">Enquire About This Format</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Partners & Ecosystem Marquee -->
+    <section class="section-dark" id="partners">
+      <div class="container mb-4">
+        <div class="text-center">
+          <span class="eyebrow on-dark">ECOSYSTEM PARTICIPANTS</span>
+          <h2 class="section-title text-white">Organisations shaping the regional infrastructure landscape</h2>
+          <p class="text-white-50 mx-auto" style="font-size: 16px; max-width: 680px;">
+            Sample institutional partners, enterprise buyers, and technology pioneers convened across our regional summits.
+          </p>
+        </div>
+      </div>
+
+      <!-- Top Row Marquee (Left Scroll) -->
+      <div class="ain-marquee-container">
+        <div class="ain-marquee-track track-left">
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/axiata.svg" alt="Axiata" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/celcomdigi.svg" alt="CelcomDigi" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/cimb.svg" alt="CIMB" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/maxis.svg" alt="Maxis" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/maybank.svg" alt="Maybank" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/petronas.svg" alt="Petronas" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/mckinsey.svg" alt="McKinsey" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/bcg.png" alt="BCG" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/bursa-malaysia.svg" alt="Bursa Malaysia" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/cybersecurity-malaysia.svg" alt="CyberSecurity Malaysia" /></div>
+          <!-- Duplicate for seamless loop -->
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/axiata.svg" alt="Axiata" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/celcomdigi.svg" alt="CelcomDigi" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/cimb.svg" alt="CIMB" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/maxis.svg" alt="Maxis" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/maybank.svg" alt="Maybank" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/petronas.svg" alt="Petronas" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/mckinsey.svg" alt="McKinsey" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/bcg.png" alt="BCG" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/bursa-malaysia.svg" alt="Bursa Malaysia" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/cybersecurity-malaysia.svg" alt="CyberSecurity Malaysia" /></div>
+        </div>
+      </div>
+
+      <!-- Bottom Row Marquee (Right Scroll) -->
+      <div class="ain-marquee-container" style="padding-top: 8px;">
+        <div class="ain-marquee-track track-right">
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/mdec.svg" alt="MDEC" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/mida.png" alt="MIDA" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/dana.svg" alt="DANA" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/tiket.svg" alt="Tiket" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/toyota.svg" alt="Toyota" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/coca-cola.svg" alt="Coca-Cola" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/pos-malaysia.svg" alt="Pos Malaysia" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/kalbe.svg" alt="Kalbe" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/semen-indonesia.svg" alt="Semen Indonesia" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/standard-chartered.png" alt="Standard Chartered" /></div>
+          <!-- Duplicate for seamless loop -->
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/mdec.svg" alt="MDEC" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/mida.png" alt="MIDA" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/dana.svg" alt="DANA" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/tiket.svg" alt="Tiket" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/toyota.svg" alt="Toyota" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/coca-cola.svg" alt="Coca-Cola" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/pos-malaysia.svg" alt="Pos Malaysia" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/kalbe.svg" alt="Kalbe" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/semen-indonesia.svg" alt="Semen Indonesia" /></div>
+          <div class="ain-partner-logo-card"><img src="/assets/img/partners-sponsors/standard-chartered.png" alt="Standard Chartered" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Series Enquiry -->
+    <section class="section-light with-grid" id="register">
+      <div class="container">
+        <div class="ain-enquiry-card">
+          <div class="text-center mb-4">
+            <span class="eyebrow on-dark">SERIES SPONSORSHIP &amp; PARTNERSHIP</span>
+            <h2 class="section-title text-white">Partner with AI InfraNext</h2>
+            <p style="color: #C9DCEC; font-size: 15.5px; max-width: 620px; margin: 0 auto;">
+              Connect with our global commercial partnerships team to discuss multi-edition sponsorship packages, boardroom hosting, or technology showcase opportunities.
+            </p>
+          </div>
+
+          <!-- Fallback Interactive Enquiry Form (HubSpot Ready) -->
+          <form id="ainEnquiryForm" onsubmit="handleEnquirySubmit(event)">
+            <div class="row">
+              <div class="col-md-6 ain-form-group">
+                <label class="ain-form-label" for="formName">Full Name *</label>
+                <input type="text" id="formName" class="ain-input" placeholder="e.g. Sarah Jenkins" required />
+              </div>
+              <div class="col-md-6 ain-form-group">
+                <label class="ain-form-label" for="formEmail">Corporate Email *</label>
+                <input type="email" id="formEmail" class="ain-input" placeholder="e.g. s.jenkins@company.com" required />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 ain-form-group">
+                <label class="ain-form-label" for="formCompany">Company / Organisation *</label>
+                <input type="text" id="formCompany" class="ain-input" placeholder="e.g. Pacific Compute Systems" required />
+              </div>
+              <div class="col-md-6 ain-form-group">
+                <label class="ain-form-label" for="formJobTitle">Job Title *</label>
+                <input type="text" id="formJobTitle" class="ain-input" placeholder="e.g. VP Infrastructure" required />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 ain-form-group">
+                <label class="ain-form-label" for="formMarket">Target Market Edition *</label>
+                <select id="formMarket" class="ain-select">
+                  <option value="All Editions">Global / Multi-Edition Series Package</option>
+                  <option value="Indonesia 2026">Indonesia 2026 (Jakarta)</option>
+                  <option value="Malaysia 2027">Malaysia 2027 (Kuala Lumpur)</option>
+                </select>
+              </div>
+              <div class="col-md-6 ain-form-group">
+                <label class="ain-form-label" for="formTier">Primary Objective *</label>
+                <select id="formTier" class="ain-select">
+                  <option value="Lead Series Sponsorship">Lead Series Sponsorship &amp; Plenary Keynote</option>
+                  <option value="Closed-Door CXO Boardroom">Closed-Door CXO Boardroom Hosting</option>
+                  <option value="Technology Showcase">Curated Technology Showcase Booth</option>
+                  <option value="Delegate Attendance">Enterprise Delegate Application</option>
+                  <option value="Media & Ecosystem">Media &amp; Ecosystem Partnership</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="ain-form-group">
+              <label class="ain-form-label" for="formMessage">Specific Requirements or Target Accounts</label>
+              <textarea id="formMessage" class="ain-textarea" rows="3" placeholder="Tell us about your strategic focus or target accounts..."></textarea>
+            </div>
+
+            <div class="text-center mt-4">
+              <button type="submit" class="btn-ain-primary" style="padding: 14px 36px; font-size: 15.5px; width: 100%; max-width: 320px;" id="enquirySubmitBtn">
+                Submit Series Enquiry
+              </button>
+            </div>
+
+            <div id="formFeedback" style="display: none; text-align: center; margin-top: 18px; padding: 12px; border-radius: 6px; font-size: 14px;"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 9: Organiser Lineage -->
+    <section class="section-dark" id="organiser">
+      <div class="container">
+        <div class="ain-organiser-box">
+          <div class="ain-organiser-grid">
+            <div>
+              <span class="eyebrow on-dark">ORGANISER TRACK RECORD</span>
+              <h2 style="font-size: clamp(26px, 3.2vw, 38px); color: #FFFFFF; margin-bottom: 16px;">Built on proven executive convening authority</h2>
+              <p style="color: #C9DCEC; font-size: 16px; line-height: 1.7; margin-bottom: 24px;">
+                AI InfraNext is organised by Trescon, the team behind World AI Show — the world's longest-running AI summit series, with 48 editions completed across four continents and more than 42,000 C-level executives convened.
+              </p>
+              <div>
+                <img src="/assets/img/brand/10-years-trescon-logo.png" alt="Trescon - 10 Years" style="height: 52px; width: auto; max-width: 220px; object-fit: contain;" />
+              </div>
+            </div>
+
+            <div class="ain-stats-lineup">
+              <div class="ain-stat-tile">
+                <div class="ain-stat-tile-num">48</div>
+                <div class="ain-stat-tile-label">Global Editions Completed</div>
+              </div>
+              <div class="ain-stat-tile">
+                <div class="ain-stat-tile-num">4</div>
+                <div class="ain-stat-tile-label">Continents Covered</div>
+              </div>
+              <div class="ain-stat-tile">
+                <div class="ain-stat-tile-num">42,000+</div>
+                <div class="ain-stat-tile-label">C-Level Executives Convened</div>
+              </div>
+              <div class="ain-stat-tile">
+                <div class="ain-stat-tile-num">1,500+</div>
+                <div class="ain-stat-tile-label">Global Solution Partners</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Section 10: Footer -->
+  <footer class="ain-footer" id="footer">
+    <div class="container">
+      <div class="ain-footer-grid">
+        <div class="ain-footer-brand">
+          <img src="/assets/img/brand/horizontal-dark-bg.svg" alt="AI InfraNext" />
+          <p class="ain-footer-desc">
+            The infrastructure beneath enterprise AI. An executive summit series convening enterprise buyers, hyperscalers, data centre operators, and infrastructure capital.
+          </p>
+          <div style="margin-top: 18px;">
+            <a href="https://www.linkedin.com/showcase/ai-infranext" target="_blank" rel="noopener noreferrer" style="color: var(--tint); text-decoration: none; font-size: 13.5px; display: inline-flex; align-items: center; gap: 6px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45c-.9 0-1.63.73-1.63 1.63 0 .9.73 1.63 1.63 1.63.9 0 1.63-.73 1.63-1.63 0-.9-.73-1.63-1.63-1.63Z"/></svg>
+              Follow on LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="ain-footer-heading">Regional Editions</h4>
+          <ul class="ain-footer-links">
+            <li><a href="/indonesia/">Indonesia 2026</a></li>
+            <li><a href="#editions" onclick="selectMarket('Malaysia')">Malaysia 2027</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="ain-footer-heading">Quick Links</h4>
+          <ul class="ain-footer-links">
+            <li><a href="#about">The Execution Layer</a></li>
+            <li><a href="#ecosystem">Who Is In The Room</a></li>
+            <li><a href="#why-sponsor">Why Sponsor</a></li>
+            <li><a href="#register">Series Enquiry</a></li>
+            <li><a href="#organiser">About Trescon</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="ain-footer-heading">Organiser &amp; Legal</h4>
+          <ul class="ain-footer-links">
+            <li><a href="https://tresconglobal.com/" target="_blank" rel="noopener noreferrer">Trescon Corporate</a></li>
+            <li><a href="https://tresconglobal.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+            <li><a href="https://tresconglobal.com/terms-and-conditions/" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
+            <li><a href="mailto:aiinfranext@tresconglobal.com">aiinfranext@tresconglobal.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ain-footer-bottom">
+        <div>
+          &copy; 2026–2027 Trescon. All rights reserved. AI InfraNext is a proprietary summit series organised by Trescon.
+        </div>
+        <div>
+          aiinfranext.com · Global Series Gateway
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Scroll-to-Top Button -->
+  <button class="ain-back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Interactive Client-side Script -->
+  <script>
+  (function () {
+    'use strict';
+
+    // 1. Data Store: Regional Editions (2 Active Events)
+    var EDITIONS_DATA = [
+      {
+        tabLabel: 'Indonesia (Inaugural)',
+        lockupName: 'AI InfraNext | Indonesia 2026',
+        brandLine: "Indonesia's AI build, decided here",
+        dates: '24–25 Nov 2026',
+        city: 'Jakarta, Indonesia',
+        format: 'Standalone · Inaugural Edition',
+        desc: "Convening national policymakers, hyperscalers, data centre developers, and enterprise CIOs to accelerate Indonesia's digital sovereign infrastructure and enterprise AI readiness.",
+        bgImage: '/assets/img/editions/jakarta-skyline.jpg',
+        websiteUrl: '/indonesia/',
+        stats: [
+          { val: '2,000 MW', tag: 'Planned', tagClass: 'tag-planned', cite: 'Target national digital infrastructure pipeline (Ministry of Communication and Informatics)' }
+        ]
+      },
+      {
+        tabLabel: 'Malaysia',
+        lockupName: 'AI InfraNext | Malaysia 2027',
+        brandLine: "Malaysia's AI build, decided here",
+        dates: '2027 (TBA)',
+        city: 'Kuala Lumpur, Malaysia',
+        format: 'Regional Expansion',
+        desc: "Uniting ASEAN's fastest growing data centre corridor with enterprise demand from finance, manufacturing, and national energy sectors.",
+        bgImage: '/assets/img/editions/kualalumpur-skyline.jpg',
+        websiteUrl: '',
+        stats: [
+          { val: '1,400 MW', tag: 'Announced', tagClass: 'tag-announced', cite: 'Current contracted data centre capacity in Johor & Greater KL' }
+        ]
+      }
+    ];
+
+    var currentMarketIdx = 0;
+
+    // 2. Render Market Pills
+    function initEditionsStage() {
+      var marketPillsContainer = document.getElementById('marketPills');
+      if (!marketPillsContainer) return;
+
+      marketPillsContainer.innerHTML = '';
+      EDITIONS_DATA.forEach(function (m, idx) {
+        var pill = document.createElement('button');
+        pill.type = 'button';
+        pill.className = 'ain-market-pill' + (idx === currentMarketIdx ? ' active' : '');
+        pill.textContent = m.tabLabel;
+        pill.addEventListener('click', function () {
+          currentMarketIdx = idx;
+          updateMarketPillSelection();
+          renderActiveEdition();
+        });
+        marketPillsContainer.appendChild(pill);
+      });
+
+      renderActiveEdition();
+    }
+
+    function updateMarketPillSelection() {
+      var pills = document.querySelectorAll('.ain-market-pill');
+      pills.forEach(function (p, idx) {
+        if (idx === currentMarketIdx) {
+          p.classList.add('active');
+        } else {
+          p.classList.remove('active');
+        }
+      });
+    }
+
+    function renderActiveEdition() {
+      var edition = EDITIONS_DATA[currentMarketIdx];
+      if (!edition) return;
+
+      var stage = document.getElementById('editionStage');
+      if (stage) {
+        stage.style.opacity = '0.4';
+      }
+
+      setTimeout(function () {
+        document.getElementById('editionLockup').textContent = edition.lockupName;
+        document.getElementById('editionBrandline').textContent = edition.brandLine;
+        document.getElementById('editionDates').textContent = edition.dates;
+        document.getElementById('editionCity').textContent = edition.city;
+        document.getElementById('editionFormat').textContent = edition.format;
+        document.getElementById('editionDesc').textContent = edition.desc;
+        document.getElementById('editionVisualImg').src = edition.bgImage;
+
+        var statsBox = document.getElementById('editionStatsBox');
+        statsBox.innerHTML = '';
+        edition.stats.forEach(function (st) {
+          var item = document.createElement('div');
+          item.className = 'ain-edition-stat-item';
+          item.innerHTML = '<div class="d-flex align-items-center">' +
+                           '<span class="ain-stat-val">' + st.val + '</span>' +
+                           '<span class="ain-stat-tag ' + st.tagClass + '">' + st.tagClass.replace('tag-', '') + '</span>' +
+                           '</div>' +
+                           '<div class="ain-stat-cite">' + st.cite + '</div>';
+          statsBox.appendChild(item);
+        });
+
+        var siteBtn = document.getElementById('editionSiteBtn');
+        if (edition.websiteUrl && edition.websiteUrl.length > 0) {
+          siteBtn.href = edition.websiteUrl;
+          siteBtn.textContent = 'Visit Edition Site';
+          siteBtn.classList.remove('disabled');
+          siteBtn.removeAttribute('disabled');
+        } else {
+          siteBtn.href = 'javascript:void(0)';
+          siteBtn.textContent = 'Edition Site Coming Soon';
+          siteBtn.classList.add('disabled');
+        }
+
+        var enquireBtn = document.getElementById('editionEnquireBtn');
+        enquireBtn.onclick = function (e) {
+          e.preventDefault();
+          var marketSelect = document.getElementById('formMarket');
+          if (marketSelect) {
+            for (var i = 0; i < marketSelect.options.length; i++) {
+              if (marketSelect.options[i].text.toLowerCase().indexOf(edition.city.split(',')[0].toLowerCase()) !== -1) {
+                marketSelect.selectedIndex = i;
+                break;
+              }
+            }
+          }
+          var targetEl = document.getElementById('register');
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        };
+
+        if (stage) {
+          stage.style.opacity = '1';
+        }
+      }, 150);
+    }
+
+    window.selectMarket = function (marketName) {
+      EDITIONS_DATA.forEach(function (m, idx) {
+        if (m.tabLabel.toLowerCase().indexOf(marketName.toLowerCase()) !== -1 || m.city.toLowerCase().indexOf(marketName.toLowerCase()) !== -1) {
+          currentMarketIdx = idx;
+          updateMarketPillSelection();
+          renderActiveEdition();
+        }
+      });
+    };
+
+    // 3. Hero Sticky Scroll Controller (2-Step Slow-Motion Reveal)
+    function handleHeroScroll() {
+      var hero = document.getElementById('hero');
+      var video = document.getElementById('ainHeroVideo');
+      if (!hero) return;
+
+      var rect = hero.getBoundingClientRect();
+      var scrollY = -rect.top;
+
+      if (scrollY > 70) {
+        hero.classList.add('is-step-1');
+      } else {
+        hero.classList.remove('is-step-1');
+      }
+
+      if (scrollY > 280) {
+        hero.classList.add('is-step-2');
+        if (video) {
+          video.style.transform = 'scale(1)';
+        }
+      } else {
+        hero.classList.remove('is-step-2');
+        if (video) {
+          video.style.transform = 'scale(1.05)';
+        }
+      }
+    }
+
+    // 4. Sponsorship 6-Pillar Explorer & Auto-Advancing Stage
+    var SPONSOR_DATA = [
+      {
+        title: 'Main-Stage Authority',
+        desc: 'Deliver keynote vision presentations, chair plenary architecture debates, and position your executive leadership before the full regional delegation.',
+        img: '/assets/img/highlights/sponsorship-01.jpg'
+      },
+      {
+        title: 'Closed-Door CXO Boardrooms',
+        desc: 'Host intimate, Chatham House discussions with 12–15 pre-qualified enterprise buyers focused on mission-critical architecture, workload migration, and infrastructure procurement.',
+        img: '/assets/img/highlights/sponsorship-02.jpg'
+      },
+      {
+        title: 'Targeted Wishlist Invitations',
+        desc: 'Submit named enterprise accounts to our dedicated VIP delegate research team for proactive pre-event engagement and verified meeting scheduling, subject to individual consent.',
+        img: '/assets/img/highlights/sponsorship-03.jpg'
+      },
+      {
+        title: 'Press & Executive Interviews',
+        desc: 'Amplify corporate announcements through dedicated media briefing sessions, on-site broadcast studio interviews, and syndicated post-event executive whitepapers.',
+        img: '/assets/img/highlights/sponsorship-04.jpg'
+      },
+      {
+        title: 'Curated Technology Showcase',
+        desc: 'Showcase hardware chassis, liquid cooling systems, sovereign cloud platforms, and AI inference workstations in an architecturally premium environment.',
+        img: '/assets/img/highlights/sponsorship-05.jpg'
+      },
+      {
+        title: 'Pre/Post-Event Amplification',
+        desc: 'Drive sustained thought leadership through dedicated digital marketing campaigns, editorial features, and community distribution across consented executive attendees.',
+        img: '/assets/img/highlights/sponsorship-06.jpg'
+      }
+    ];
+
+    var currentSponsorIdx = 0;
+    var sponsorTimer = null;
+    var isSponsorHovered = false;
+
+    function initSponsorshipExplorer() {
+      var items = document.querySelectorAll('.ain-accordion-item');
+      var container = document.getElementById('why-sponsor');
+
+      items.forEach(function (item) {
+        item.addEventListener('click', function () {
+          var idx = parseInt(item.getAttribute('data-idx'), 10);
+          activateSponsorItem(idx);
+        });
+      });
+
+      if (container) {
+        container.addEventListener('mouseenter', function () { isSponsorHovered = true; });
+        container.addEventListener('mouseleave', function () { isSponsorHovered = false; });
+      }
+
+      startSponsorAutoAdvance();
+    }
+
+    function activateSponsorItem(idx) {
+      currentSponsorIdx = idx;
+      var items = document.querySelectorAll('.ain-accordion-item');
+      items.forEach(function (it, i) {
+        if (i === idx) {
+          it.classList.add('active');
+        } else {
+          it.classList.remove('active');
+        }
+      });
+
+      var data = SPONSOR_DATA[idx];
+      var imgEl = document.getElementById('sponsorStageImg');
+      var titleEl = document.getElementById('sponsorStageTitle');
+      var descEl = document.getElementById('sponsorStageDesc');
+
+      if (imgEl && data) {
+        imgEl.style.opacity = '0.5';
+        setTimeout(function () {
+          imgEl.src = data.img;
+          titleEl.textContent = data.title;
+          descEl.textContent = data.desc;
+          imgEl.style.opacity = '1';
+        }, 120);
+      }
+    }
+
+    function startSponsorAutoAdvance() {
+      if (sponsorTimer) clearInterval(sponsorTimer);
+      sponsorTimer = setInterval(function () {
+        if (!isSponsorHovered) {
+          var nextIdx = (currentSponsorIdx + 1) % SPONSOR_DATA.length;
+          activateSponsorItem(nextIdx);
+        }
+      }, 5200);
+    }
+
+    // 6. Navbar, Drawer, Scroll Progress & Back-to-Top
+    function initScrollAndNav() {
+      var progressBar = document.getElementById('scroll-progress');
+      var navbar = document.querySelector('.ain-navbar');
+      var backToTop = document.getElementById('backToTop');
+      var navToggle = document.getElementById('navToggle');
+      var navClose = document.getElementById('navClose');
+      var drawer = document.getElementById('mobileDrawer');
+      var drawerLinks = document.querySelectorAll('.drawer-link');
+
+      window.addEventListener('scroll', function () {
+        var winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+
+        if (progressBar) progressBar.style.width = scrolled + '%';
+
+        if (navbar) {
+          if (winScroll > 60) {
+            navbar.classList.add('scrolled');
+          } else {
+            navbar.classList.remove('scrolled');
+          }
+        }
+
+        if (backToTop) {
+          if (winScroll > 120) {
+            backToTop.classList.add('visible');
+          } else {
+            backToTop.classList.remove('visible');
+          }
+        }
+
+        handleHeroScroll();
+      }, { passive: true });
+
+      if (backToTop) {
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      if (navToggle && drawer) {
+        navToggle.addEventListener('click', function () {
+          drawer.classList.add('open');
+        });
+      }
+
+      if (navClose && drawer) {
+        navClose.addEventListener('click', function () {
+          drawer.classList.remove('open');
+        });
+      }
+
+      drawerLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (drawer) drawer.classList.remove('open');
+        });
+      });
+    }
+
+    // 7. Constituencies Big Carousel Slider (3 in a row)
+    function initConstituenciesSlider() {
+      var track = document.getElementById('constituencyTrack');
+      var prevBtn = document.getElementById('constituencyPrev');
+      var nextBtn = document.getElementById('constituencyNext');
+      var dotsContainer = document.getElementById('constituencyDots');
+      var viewport = document.getElementById('constituencyViewport');
+      if (!track || !prevBtn || !nextBtn || !dotsContainer || !viewport) return;
+
+      var slides = track.querySelectorAll('.ain-constituency-slide');
+      var totalSlides = slides.length;
+      var currentIndex = 0;
+
+      function getVisibleCount() {
+        var w = window.innerWidth;
+        if (w <= 640) return 1;
+        if (w <= 991) return 2;
+        return 3;
+      }
+
+      function getMaxIndex() {
+        return Math.max(0, totalSlides - getVisibleCount());
+      }
+
+      function renderDots() {
+        dotsContainer.innerHTML = '';
+        var maxIdx = getMaxIndex();
+        var numDots = maxIdx + 1;
+        for (var i = 0; i < numDots; i++) {
+          (function (idx) {
+            var dot = document.createElement('button');
+            dot.className = 'ain-slider-dot' + (idx === currentIndex ? ' active' : '');
+            dot.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+            dot.addEventListener('click', function () {
+              goToSlide(idx);
+            });
+            dotsContainer.appendChild(dot);
+          })(i);
+        }
+      }
+
+      function updateSlidePosition() {
+        if (slides.length === 0) return;
+        var maxIdx = getMaxIndex();
+        if (currentIndex > maxIdx) currentIndex = maxIdx;
+
+        var slideWidth = slides[0].getBoundingClientRect().width;
+        var gap = window.innerWidth <= 991 ? 20 : 24;
+        var offset = currentIndex * (slideWidth + gap);
+
+        track.style.transform = 'translateX(-' + offset + 'px)';
+
+        prevBtn.disabled = (currentIndex === 0);
+        nextBtn.disabled = (currentIndex >= maxIdx);
+
+        var dots = dotsContainer.querySelectorAll('.ain-slider-dot');
+        dots.forEach(function (d, i) {
+          if (i === currentIndex) {
+            d.classList.add('active');
+          } else {
+            d.classList.remove('active');
+          }
+        });
+      }
+
+      function goToSlide(idx) {
+        var maxIdx = getMaxIndex();
+        currentIndex = Math.max(0, Math.min(idx, maxIdx));
+        updateSlidePosition();
+      }
+
+      prevBtn.addEventListener('click', function () {
+        if (currentIndex > 0) {
+          goToSlide(currentIndex - 1);
+        }
+      });
+
+      nextBtn.addEventListener('click', function () {
+        var maxIdx = getMaxIndex();
+        if (currentIndex < maxIdx) {
+          goToSlide(currentIndex + 1);
+        }
+      });
+
+      // Touch / Swipe support
+      var startX = 0;
+      var currentX = 0;
+      var isSwiping = false;
+
+      viewport.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].clientX;
+        currentX = startX;
+        isSwiping = true;
+      }, { passive: true });
+
+      viewport.addEventListener('touchmove', function (e) {
+        if (!isSwiping) return;
+        currentX = e.touches[0].clientX;
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', function () {
+        if (!isSwiping) return;
+        isSwiping = false;
+        var diffX = startX - currentX;
+        if (Math.abs(diffX) > 40) {
+          if (diffX > 0) {
+            goToSlide(currentIndex + 1);
+          } else {
+            goToSlide(currentIndex - 1);
+          }
+        }
+      });
+
+      window.addEventListener('resize', function () {
+        renderDots();
+        updateSlidePosition();
+      });
+
+      renderDots();
+      updateSlidePosition();
+    }
+
+    // 8. Series Enquiry Form Submission Handler
+    window.handleEnquirySubmit = function (event) {
+      event.preventDefault();
+      var btn = document.getElementById('enquirySubmitBtn');
+      var feedback = document.getElementById('formFeedback');
+
+      btn.disabled = true;
+      btn.textContent = 'Submitting Enquiry...';
+
+      setTimeout(function () {
+        btn.textContent = 'Enquiry Received';
+        btn.style.backgroundColor = 'var(--green)';
+        feedback.style.display = 'block';
+        feedback.style.backgroundColor = 'var(--green-bg)';
+        feedback.style.color = 'var(--green)';
+        feedback.textContent = 'Thank you for your interest. A member of our commercial partnerships team will be in touch shortly.';
+      }, 1000);
+    };
+
+    // Initialise All Modules on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', function () {
+      initEditionsStage();
+      initConstituenciesSlider();
+      initSponsorshipExplorer();
+      initScrollAndNav();
+      handleHeroScroll();
+    });
+
+  })();
+  </script>
+</body>
+</html>

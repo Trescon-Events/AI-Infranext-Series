@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI InfraNext – Series Website · Build Specification</title>
+<style>
+  :root {
+    --navy: #132F4B;
+    --navy-deep: #0B1E33;
+    --accent: #1F6FB2;
+    --tint: #9FC4E0;
+    --wash: #F6F9FC;
+    --light: #EEF3F8;
+    --paper: #FFFFFF;
+    --ink: #1A1A1A;
+    --grey: #5A6672;
+    --line: #D6E0E9;
+    --green: #1F6B45;
+    --greenbg: #EAF6F0;
+    --amber: #8A5A00;
+    --amberbg: #FFF6E5;
+    --red: #A33333;
+    --redbg: #FDEEEE;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); background: var(--wash); line-height: 1.6; font-size: 15px; }
+  header.cover { background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 68%, #19436B 100%); color: #fff; padding: 56px 6vw 44px; }
+  header.cover .eyebrow { font: 600 12px/1 "JetBrains Mono", Consolas, monospace; letter-spacing: .18em; text-transform: uppercase; color: var(--tint); }
+  header.cover h1 { font: 800 clamp(30px, 4vw, 46px)/1.1 "Space Grotesk", "Segoe UI", sans-serif; margin: 14px 0 10px; letter-spacing: -0.5px; }
+  header.cover h1 span { color: var(--tint); }
+  header.cover p { color: #C9DCEC; max-width: 860px; margin: 0; }
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 28px; }
+  .meta-grid div { background: rgba(255,255,255,.06); border: 1px solid rgba(159,196,224,.22); border-radius: 12px; padding: 12px 14px; }
+  .meta-grid b { display: block; font: 600 11px/1.2 "JetBrains Mono", Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--tint); margin-bottom: 4px; }
+  .meta-grid a { color: #fff; text-decoration: none; }
+  .meta-grid a:hover { text-decoration: underline; }
+  .layout { display: grid; grid-template-columns: 250px 1fr; gap: 0; max-width: 1360px; margin: 0 auto; }
+  nav.toc { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; padding: 28px 18px 28px 6vw; border-right: 1px solid var(--line); background: var(--paper); }
+  nav.toc b { font: 600 11px/1 "JetBrains Mono", Consolas, monospace; letter-spacing: .14em; color: var(--grey); text-transform: uppercase; }
+  nav.toc ol { padding-left: 18px; margin: 12px 0 0; }
+  nav.toc li { margin: 6px 0; font-size: 13.5px; }
+  nav.toc a { color: var(--ink); text-decoration: none; }
+  nav.toc a:hover { color: var(--accent); }
+  main { padding: 28px 5vw 80px 44px; min-width: 0; }
+  section { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 26px 30px; margin-bottom: 22px; }
+  h2 { font: 700 23px/1.25 "Space Grotesk", "Segoe UI", sans-serif; margin: 0 0 14px; color: var(--navy); display: flex; align-items: center; gap: 12px; }
+  h2 .n { font: 700 12px/1 "JetBrains Mono", Consolas, monospace; background: var(--accent); color: #fff; border-radius: 8px; padding: 6px 8px; }
+  h3 { font: 700 16px/1.3 "Space Grotesk", "Segoe UI", sans-serif; margin: 22px 0 8px; color: var(--navy); }
+  p { margin: 0 0 10px; }
+  code, .mono { font-family: "JetBrains Mono", Consolas, monospace; font-size: 12.8px; background: var(--light); border-radius: 5px; padding: 1px 6px; color: var(--navy); }
+  pre { background: var(--navy-deep); color: #E2ECF5; border-radius: 12px; padding: 16px 18px; overflow-x: auto; font: 12.8px/1.6 "JetBrains Mono", Consolas, monospace; margin: 10px 0 14px; }
+  pre .c { color: var(--tint); }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 14px; font-size: 13.8px; }
+  th, td { text-align: left; vertical-align: top; padding: 9px 11px; border-bottom: 1px solid var(--line); }
+  th { background: var(--light); font-weight: 700; color: var(--navy); font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; }
+  tr:last-child td { border-bottom: 0; }
+  .tag { display: inline-block; font: 700 11px/1 "JetBrains Mono", Consolas, monospace; padding: 4px 8px; border-radius: 999px; }
+  .dark { background: var(--navy); color: #fff; }
+  .light { background: var(--light); color: var(--navy); border: 1px solid var(--line); }
+  .ok { background: var(--greenbg); color: var(--green); }
+  .warn { background: var(--amberbg); color: var(--amber); }
+  .info { background: #E6F0FA; color: var(--accent); }
+  .callout { border-left: 4px solid var(--accent); background: var(--light); padding: 12px 16px; border-radius: 8px; margin: 12px 0; }
+  .callout.warn-box { border-color: var(--amber); background: var(--amberbg); }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 10px 0; }
+  .sw { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: 12.5px; background: var(--paper); }
+  .sw i { display: block; height: 58px; }
+  .sw div { padding: 8px 10px; } .sw b { display: block; color: var(--navy); }
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 12px 0; font-size: 13px; }
+  .flow .box { border: 1.5px solid var(--accent); border-radius: 10px; padding: 9px 12px; background: var(--wash); font-weight: 600; color: var(--navy); }
+  .flow .box small { display: block; font-weight: 400; color: var(--grey); }
+  .flow .arr { color: var(--accent); font-weight: 800; }
+  ul { margin: 6px 0 12px; padding-left: 20px; } li { margin: 4px 0; }
+  footer { text-align: center; color: var(--grey); font-size: 12.5px; padding: 0 0 40px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } nav.toc { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 20px 6vw; } main { padding: 22px 4vw 60px; } section { padding: 20px 18px; } }
+  @media print { nav.toc { display: none; } .layout { grid-template-columns: 1fr; } section { break-inside: avoid; } header.cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="eyebrow">Build Specification · v1.0 · 26 Nov 2026</div>
+  <h1>AI InfraNext — <span>Series Website</span></h1>
+  <p>Technical and functional specification for the AI InfraNext global series homepage (aiinfranext.com): architecture, stack, page structure, design system, regional editions data, integrations, responsive rules, build &amp; deployment, and editorial guardrails.</p>
+  <div class="meta-grid">
+    <div><b>Live Domain</b><a href="https://aiinfranext.com/">aiinfranext.com</a> · <a href="https://www.aiinfranext.com/">www</a></div>
+    <div><b>Repository</b>Trescon-Events/aiinfranext-series · <code style="background:rgba(255,255,255,.12);color:#fff">main</code></div>
+    <div><b>Hosting</b>Cloudflare Pages · project <code style="background:rgba(255,255,255,.12);color:#fff">aiinfranext-series</code></div>
+    <div><b>Brand Theme</b>Alternating Navy Core (#132F4B) &amp; Cloud Wash (#F6F9FC)</div>
+    <div><b>Series Descriptor</b>The infrastructure beneath enterprise AI</div>
+    <div><b>Organiser</b>Trescon · aiinfranext@tresconglobal.com</div>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="toc">
+  <b>Contents</b>
+  <ol>
+    <li><a href="#s1">Overview &amp; Scope</a></li>
+    <li><a href="#s2">Hosting Architecture</a></li>
+    <li><a href="#s3">Technology Stack</a></li>
+    <li><a href="#s4">Repository Structure</a></li>
+    <li><a href="#s5">Build &amp; Deployment</a></li>
+    <li><a href="#s6">Page Structure</a></li>
+    <li><a href="#s7">Design System</a></li>
+    <li><a href="#s8">Editions &amp; Markets Data</a></li>
+    <li><a href="#s9">Interactive Behaviour</a></li>
+    <li><a href="#s10">Integrations &amp; Tracking</a></li>
+    <li><a href="#s11">SEO, Meta &amp; Icons</a></li>
+    <li><a href="#s12">Responsive Specification</a></li>
+    <li><a href="#s13">Assets &amp; Performance</a></li>
+    <li><a href="#s14">QA &amp; Validation</a></li>
+    <li><a href="#s15">Conventions &amp; Guardrails</a></li>
+    <li><a href="#s16">Open Items</a></li>
+    <li><a href="#s17">Change Log</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="s1">
+  <h2><span class="n">01</span>Overview &amp; Scope</h2>
+  <p>A single-page series gateway for <b>AI InfraNext</b> — Trescon's executive summit series dedicated to the infrastructure layer beneath enterprise AI (compute, cloud, data centres, power, connectivity, security, governance, and infrastructure capital). It establishes the global brand proposition (<i>"Where AI infrastructure meets enterprise demand"</i>), routes visitors to regional edition microsites, and converts sponsors and qualified buyers through HubSpot.</p>
+  <table>
+    <tr><th style="width:28%">Item</th><th>Specification</th></tr>
+    <tr><td>Page type</td><td>Static single-page series hub (<code>index.html</code>) + central resource/insights directory (<code>/insights/</code>)</td></tr>
+    <tr><td>Primary goals</td><td>Route buyers and sponsors to regional editions (Explore Editions), capture series sponsorship enquiries (Why Sponsor → Enquire Now), and enforce the two-door qualification model</td></tr>
+    <tr><td>Audience</td><td>Enterprise CIOs/CTOs/CISOs/Heads of Infrastructure, Hyperscalers &amp; Neoclouds, Data Centre &amp; Network Operators, Government &amp; Regulators, Infrastructure Capital</td></tr>
+    <tr><td>Supported devices</td><td>Desktop ≥ 1280px, laptop, tablet (768–1024px), mobile 320–430px (tested at 320×680, 360×800, 375×812, 412×915)</td></tr>
+    <tr><td>Browsers</td><td>Current Chrome, Edge, Safari (macOS/iOS), Firefox, Samsung Internet</td></tr>
+    <tr><td>Out of scope</td><td>Individual edition microsites (<code>/indonesia/</code>, <code>/malaysia/</code>, <code>/singapore/</code>, <code>/uae/</code>) — maintained as dedicated edition projects routed via Cloudflare Worker</td></tr>
+  </table>
+</section>
+
+<section id="s2">
+  <h2><span class="n">02</span>Hosting Architecture</h2>
+  <p><code>aiinfranext.com</code> runs natively on Cloudflare Pages with a Worker router mapping regional edition prefixes (<code>/indonesia/*</code>, <code>/malaysia/*</code>, etc.) to their respective edition Pages projects while serving the series homepage and global assets from the root project.</p>
+  <div class="flow">
+    <div class="box">Visitor<small>aiinfranext.com/*</small></div><span class="arr">→</span>
+    <div class="box">Cloudflare Zone<small>aiinfranext.com · account “Trescon”</small></div><span class="arr">→</span>
+    <div class="box">Worker <code>aiinfranext-router</code><small>prefix → edition project map</small></div><span class="arr">→</span>
+    <div class="box">Pages <code>aiinfranext-series</code><small>/ · /assets/* · /insights/*</small></div>
+    <span class="arr">or</span>
+    <div class="box">Edition Projects<small>/indonesia/ · /malaysia/ · /uae/…</small></div>
+  </div>
+  <table>
+    <tr><th style="width:28%">Route</th><th>Served by</th></tr>
+    <tr><td><code>/</code> (series homepage)</td><td>Pages project <code>aiinfranext-series</code> → <code>index.html</code></td></tr>
+    <tr><td><code>/assets/*</code></td><td>Pages project <code>aiinfranext-series</code> (global logos, media, stylesheets)</td></tr>
+    <tr><td><code>/insights/*</code></td><td>Pages project (series thought leadership, market briefs, and whitepapers)</td></tr>
+    <tr><td><code>/indonesia/*</code>, <code>/malaysia/*</code>, <code>/singapore/*</code>, <code>/uae/*</code></td><td>Dedicated regional edition Pages projects mapped via Worker prefix</td></tr>
+  </table>
+  <div class="callout"><b>Architecture rule:</b> Never mix edition-specific registration forms (Konfhub) onto the global series root. All delegate applications and Business Pass checkouts happen on the respective regional edition microsites.</div>
+</section>
+
+<section id="s3">
+  <h2><span class="n">03</span>Technology Stack</h2>
+  <table>
+    <tr><th style="width:28%">Layer</th><th>Choice</th><th style="width:30%">Notes</th></tr>
+    <tr><td>Markup</td><td>Hand-authored static HTML5 (single <code>index.html</code>, ~190 KB incl. inline CSS/JS)</td><td>Zero runtime framework overhead</td></tr>
+    <tr><td>CSS</td><td>Bootstrap 4 grid (<code>bootstrap.min.css</code>) + custom CSS variables (AI InfraNext Brand Kit tokens) + inline responsive overrides</td><td>Restrained architectural aesthetic; no flashy AI gradients</td></tr>
+    <tr><td>JavaScript</td><td>Vanilla ES5/ES6 in one self-contained inline IIFE</td><td>Renders editions stage, pillar accordions, marquee, and modals</td></tr>
+    <tr><td>Icons</td><td>Clean geometric inline SVG icons</td><td>Consistent 1.75px stroke weight across UI</td></tr>
+    <tr><td>Fonts</td><td>Google Fonts: Space Grotesk (headlines), Plus Jakarta Sans (body/UI), JetBrains Mono (data &amp; labels)</td><td><code>display=swap</code>, tabular figures for infrastructure metrics</td></tr>
+    <tr><td>Forms</td><td>HubSpot embed v2 (<code>js.hsforms.net/forms/embed/v2.js</code>)</td><td>Portal 2953901 (Series Sponsorship &amp; General Enquiry)</td></tr>
+    <tr><td>Media</td><td>Self-hosted H.264 MP4/WebM infrastructure reel + high-res JPG/SVG</td><td>All stored under <code>/assets/</code></td></tr>
+    <tr><td>Hosting/CDN</td><td>Cloudflare Pages + Worker router</td><td>25 MB per-file limit</td></tr>
+  </table>
+</section>
+
+<section id="s4">
+  <h2><span class="n">04</span>Repository Structure</h2>
+<pre><span class="c"># Deployed (copied by the Pages build command)</span>
+index.html                 Live series homepage (Alternating Navy &amp; Cloud Wash theme)
+_redirects                 301 redirects for legacy or campaign shortlinks
+assets/
+  css/                     bootstrap.min.css, infranext-theme.css
+  img/
+    banner/                ain-hero-reel.mp4, ain-hero-poster.jpg
+    brand/                 aiinfranext-logo-w.svg, aiinfranext-logo-b.svg, trescon-logo.svg
+    editions/              ain-indonesia-26-w/-b.svg, ain-malaysia-27-w/-b.svg, *-skyline.jpg
+    pillars/               pillar-01-compute.jpg … pillar-04-security.jpg
+    highlights/            sponsorship-01.jpg … sponsorship-06.jpg
+    partners-sponsors/     monochrome &amp; full-colour ecosystem logos
+    og-aiinfranext.jpg     og:image (1200×630)
+    favicon.ico/.svg, favicon-16/32/192/512.png, apple-touch-icon.png
+insights/                  Series market briefs &amp; infrastructure reports
+
+<span class="c"># Repo-only (NOT deployed)</span>
+tools/                     build-series.js, validate-series.js
+brand/                     AI InfraNext Global Messaging &amp; Commercial Playbook
+AGENTS.md / CLAUDE.md      Standing editorial &amp; technical guardrails</pre>
+</section>
+
+<section id="s5">
+  <h2><span class="n">05</span>Build &amp; Deployment</h2>
+  <h3>Local preview</h3>
+<pre>git pull
+npx serve .        <span class="c"># root-relative /assets/ paths require a local HTTP server</span></pre>
+  <h3>Deploy</h3>
+  <p>Push to <code>main</code>. The GitHub-connected Cloudflare Pages project <code>aiinfranext-series</code> builds and publishes automatically in ~60 seconds. A failed build retains the previous live deployment.</p>
+<pre><span class="c"># Pages build command (Settings → Builds)</span>
+mkdir -p dist &amp;&amp; cp -R index.html assets insights _redirects dist/
+<span class="c"># Output directory: dist</span></pre>
+  <div class="callout warn-box">Any <b>new top-level file or folder</b> must be explicitly added to the build command, otherwise it will be omitted from <code>dist/</code>. Keep all favicons inside <code>/assets/img/</code>.</div>
+  <h3>Build &amp; Validation Scripts</h3>
+  <table>
+    <tr><th style="width:5%">#</th><th style="width:28%">Script</th><th>Output</th></tr>
+    <tr><td>1</td><td><code>tools/build-series.js</code></td><td>Compiles <code>EDITIONS_BY_REGION</code> data, brand copy blocks, and alternating section styles into <code>index.html</code></td></tr>
+    <tr><td>2</td><td><code>tools/validate-series.js</code></td><td>Verifies HTML tag balance, checks that forbidden terms ("By invitation only", "AI Infranext", "AIN") do not appear anywhere in copy, validates logo SVGs, and checks JS syntax</td></tr>
+  </table>
+</section>
+
+<section id="s6">
+  <h2><span class="n">06</span>Page Structure</h2>
+  <p>Sections strictly alternate Dark Navy (<code>#132F4B</code> / <code>#0B1E33</code>) and Light Cloud Wash (<code>#F6F9FC</code> / <code>#FFFFFF</code>) so the architectural argument reads in distinct, structured beats.</p>
+  <table>
+    <tr><th style="width:4%">#</th><th style="width:22%">Section</th><th style="width:12%">Anchor</th><th style="width:9%">Theme</th><th>Content &amp; components</th></tr>
+    <tr><td>0</td><td>Floating navbar</td><td><code>#navbar-top</code></td><td><span class="tag dark">Navy</span></td><td>Pill bar (70px desktop; 60px mobile) with <code>aiinfranext-logo-w.svg</code>. Links: Overview · Pillars · Editions · Ecosystem + <i>Why Sponsor</i> / <i>Enquire Now</i> CTAs. &lt;992px: hamburger → drawer. Top progress bar in Accent Blue (<code>#1F6FB2</code>).</td></tr>
+    <tr><td>1</td><td>Hero</td><td><code>#hero</code></td><td><span class="tag dark">Navy</span></td><td>Full-screen muted infrastructure reel with dark navy overlay. 2-step sticky scroll reveal: initial frame = clean visual + series mark; scroll step = <i>"The infrastructure beneath enterprise AI"</i> + <i>"Where AI infrastructure meets enterprise demand"</i> + <i>Explore Editions</i> &amp; <i>Sponsor Series</i> CTAs.</td></tr>
+    <tr><td>2</td><td>The Execution Layer</td><td><code>#about</code></td><td><span class="tag light">Wash</span></td><td>Series thesis (<i>"From announced to operational"</i>); positioning contrast (Not a general AI adoption conference / Not a data centre facilities trade show); 4 benchmark cards (800+ Benchmark Decision-Makers, 40–50 Curated Leaders, 4 Core Pillars, 5 Cross-Cutting Themes).</td></tr>
+    <tr><td>3</td><td>Editions &amp; Markets</td><td><code>#editions</code></td><td><span class="tag dark">Navy</span></td><td>Region tabs (Southeast Asia · Middle East · India) → market sub-tabs → full-width stage: edition lockup (<code>AI InfraNext | [Market] [Year]</code>), market hook, date &amp; city pills, <i>Visit Edition Site</i> / <i>Edition Coming Soon</i> + <i>Enquire Now</i>; market capacity stats card. See §8.</td></tr>
+    <tr><td>4</td><td>Universal Content Matrix</td><td><code>#pillars</code></td><td><span class="tag light">Wash</span></td><td>Interactive 4 Core Pillars grid (01 AI Compute &amp; Enterprise AI Factories; 02 AI-Ready Data Centres &amp; Digital Infrastructure; 03 Trusted Cloud, Data &amp; Sovereign Infrastructure; 04 Secure &amp; Production-Scale Enterprise AI) + 5 Cross-Cutting Themes bar (Capital, Policy, Sustainability, TCO, Talent).</td></tr>
+    <tr><td>5</td><td>Who Is In The Room</td><td><code>#ecosystem</code></td><td><span class="tag dark">Navy</span></td><td>The 5 Core Constituencies (Enterprise Buyers, Hyperscalers/Neoclouds, Data Centre &amp; Network Operators, Government &amp; Regulators, Infrastructure Capital) + Two-Door Attendance Model strip (Delegate Pass vs. Business Pass).</td></tr>
+    <tr><td>6</td><td>Sponsorship Opportunities</td><td><code>#why-sponsor</code></td><td><span class="tag light">Wash</span></td><td>6-pillar interactive accordion (Main-Stage Authority, Closed-Door CXO Boardrooms, Targeted Wishlist Invitations, Press &amp; Executive Interviews, Curated Technology Showcase, Pre/Post-Event Amplification) synced to a visual stage; auto-advance 5.2s.</td></tr>
+    <tr><td>7</td><td>Partners &amp; Ecosystem</td><td><code>#partners</code></td><td><span class="tag dark">Navy</span></td><td>Dual counter-scrolling monochrome logo marquees showcasing ecosystem participants across compute, cloud, data centres, power, and enterprise sectors (screened against active negotiations).</td></tr>
+    <tr><td>8</td><td>Series Enquiry</td><td><code>#register</code></td><td><span class="tag light">Wash</span></td><td>Elevated Navy conversion card: <i>"Partner with AI InfraNext"</i> + <i>Enquire Now</i> → expands collapsible HubSpot Series Sponsorship &amp; Partnership form.</td></tr>
+    <tr><td>9</td><td>Organiser Lineage</td><td><code>#organiser</code></td><td><span class="tag dark">Navy</span></td><td>Trescon attribution block: <i>"AI InfraNext is organised by Trescon, the team behind World AI Show — the world's longest-running AI summit series, with 48 editions completed across four continents and more than 42,000 C-level executives convened."</i></td></tr>
+    <tr><td>10</td><td>Footer</td><td><code>#footer</code></td><td><span class="tag dark">Deep Navy</span></td><td>AI InfraNext series logo, global descriptor, LinkedIn link only, Regional Editions list, Quick Links, Organiser links (About Trescon, Insights, Contact, Privacy, Cookie, Terms).</td></tr>
+    <tr><td>—</td><td>Floating UI</td><td></td><td></td><td>Scroll-to-top button (bottom-right, appears after 120px scroll) + Edition Quick-Jump drawer.</td></tr>
+  </table>
+</section>
+
+<section id="s7">
+  <h2><span class="n">07</span>Design System (AI InfraNext Brand Kit)</h2>
+  <h3>Colour Palette</h3>
+  <p>Architectural, restrained, and high-contrast. Designed to read like an institutional infrastructure platform rather than a consumer tech show. Avoid neon AI gradients, glowing meshes, or purple-to-cyan clichés.</p>
+  <div class="swatches">
+    <div class="sw"><i style="background:#132F4B"></i><div><b>Primary Navy</b>#132F4B · dark sections, headers</div></div>
+    <div class="sw"><i style="background:#0B1E33"></i><div><b>Deep Navy</b>#0B1E33 · hero base, code &amp; footer</div></div>
+    <div class="sw"><i style="background:#1F6FB2"></i><div><b>Accent Blue</b>#1F6FB2 · primary CTAs, active tabs</div></div>
+    <div class="sw"><i style="background:#9FC4E0"></i><div><b>Soft Tint Blue</b>#9FC4E0 · eyebrows &amp; labels on dark</div></div>
+    <div class="sw"><i style="background:#F6F9FC"></i><div><b>Cloud Wash</b>#F6F9FC · light section background</div></div>
+    <div class="sw"><i style="background:#EEF3F8"></i><div><b>Light Surface</b>#EEF3F8 · secondary fills &amp; pills</div></div>
+    <div class="sw"><i style="background:#FFFFFF;border-bottom:1px solid #D6E0E9"></i><div><b>Pure Paper</b>#FFFFFF · elevated cards on light</div></div>
+    <div class="sw"><i style="background:#1A1A1A"></i><div><b>Primary Ink</b>#1A1A1A · body text on light</div></div>
+    <div class="sw"><i style="background:#5A6672"></i><div><b>Muted Grey</b>#5A6672 · secondary text, citations</div></div>
+    <div class="sw"><i style="background:#D6E0E9"></i><div><b>Hairline Border</b>#D6E0E9 · structural 1px rules</div></div>
+  </div>
+  <h3>Typography</h3>
+  <table>
+    <tr><th>Role</th><th>Font</th><th>Treatment &amp; Size</th></tr>
+    <tr><td>Hero H1</td><td>Space Grotesk 700–800</td><td><code>clamp(34px, 4.6vw, 64px)</code> · <b>Sentence case</b> (never all caps)</td></tr>
+    <tr><td>Section Headings</td><td>Space Grotesk 700</td><td><code>clamp(26px, 3.6vw, 44px)</code> · Written as clear propositions, sentence case</td></tr>
+    <tr><td>Body / UI</td><td>Plus Jakarta Sans 400–600</td><td>15–18px · Max 78ch line measure, left-aligned</td></tr>
+    <tr><td>Eyebrows &amp; Labels</td><td>JetBrains Mono 600</td><td>11–13px · Uppercase, letter-spaced <code>0.14em</code></td></tr>
+    <tr><td>Infrastructure Metrics</td><td>JetBrains Mono / Space Grotesk</td><td>Tabular figures (<code>font-variant-numeric: tabular-nums</code>); plain-text citations beneath</td></tr>
+  </table>
+  <h3>Components</h3>
+  <table>
+    <tr><th style="width:28%">Component</th><th>Spec</th></tr>
+    <tr><td>Primary CTA</td><td>Rounded pill/button (<code>border-radius: 6px</code> or pill), <code>#1F6FB2</code>, white Plus Jakarta Sans 600; hover <code>#185A91</code> + subtle 1px lift</td></tr>
+    <tr><td>Secondary CTA</td><td>Transparent with 1.5px <code>#9FC4E0</code> border on dark (or <code>#132F4B</code> on light); hover tint fill</td></tr>
+    <tr><td>Cards</td><td>Crisp architectural borders (<code>1px solid #D6E0E9</code> on light; <code>1px solid rgba(159,196,224,0.2)</code> on dark), <code>border-radius: 10px</code></td></tr>
+    <tr><td>Background texture</td><td>Subtle architectural gridlines (<code>1px solid rgba(214,224,233,0.45)</code>) on light sections; clean dark gradient on Navy sections</td></tr>
+    <tr><td>Motion</td><td>Restrained, purposeful transitions (<code>0.35s cubic-bezier(0.16, 1, 0.3, 1)</code>). No bouncing or looping decorative animations.</td></tr>
+  </table>
+</section>
+
+<section id="s8">
+  <h2><span class="n">08</span>Editions &amp; Markets Data</h2>
+  <p>Defined in the <code>EDITIONS_BY_REGION</code> object inside the page script. Each edition entry contains: <code>tabLabel, lockupName, logoWhiteSvg, logoDarkSvg, brandLine, dates, city, format, description, bgImage, websiteUrl, marketStats[]</code>. An empty <code>websiteUrl</code> automatically renders a non-interactive <i>"Edition Site Coming Soon"</i> badge alongside <i>"Enquire Now"</i>.</p>
+  <table>
+    <tr><th>Region</th><th>Market Tab</th><th>Lockup</th><th>Dates</th><th>Location</th><th>Website</th><th>Status / Format</th></tr>
+    <tr><td rowspan="3">Southeast Asia</td><td>Indonesia (Inaugural)</td><td><code>AI InfraNext | Indonesia 2026</code></td><td>24–25 Nov 2026</td><td>Jakarta, Indonesia</td><td><span class="tag ok">/indonesia/</span></td><td>Standalone · Inaugural Edition</td></tr>
+    <tr><td>Malaysia</td><td><code>AI InfraNext | Malaysia 2027</code></td><td>2027 (TBA)</td><td>Kuala Lumpur, Malaysia</td><td><span class="tag info">In Rollout</span></td><td>Regional Expansion</td></tr>
+    <tr><td>Singapore</td><td><code>AI InfraNext | Singapore 2027</code></td><td>2027 (TBA)</td><td>Singapore</td><td><span class="tag warn">Pipeline</span></td><td>Regional Hub</td></tr>
+    <tr><td rowspan="2">Middle East</td><td>UAE</td><td><code>AI InfraNext | UAE 2027</code></td><td>2027 (TBA)</td><td>Dubai / Abu Dhabi, UAE</td><td><span class="tag warn">Pipeline</span></td><td>GCC Infrastructure Hub</td></tr>
+    <tr><td>Saudi Arabia</td><td><code>AI InfraNext | KSA 2027</code></td><td>2027 (TBA)</td><td>Riyadh, Saudi Arabia</td><td><span class="tag warn">Pipeline</span></td><td>GCC Expansion</td></tr>
+    <tr><td>India</td><td>India</td><td><code>AI InfraNext | India 2027</code></td><td>2027 (TBA)</td><td>Mumbai / Bengaluru, India</td><td><span class="tag warn">Pipeline</span></td><td>South Asia Hub</td></tr>
+  </table>
+  <p><b>Adding a market edition:</b> add the market object to <code>EDITIONS_BY_REGION</code>, upload <code>ain-[market]-[yy]-w.svg</code> (white lockup for dark stage) and <code>-b.svg</code> (navy lockup) to <code>assets/img/editions/</code>, add a 1920×820 city/infrastructure skyline JPG, and update the region tab counter.</p>
+</section>
+
+<section id="s9">
+  <h2><span class="n">09</span>Interactive Behaviour</h2>
+  <table>
+    <tr><th style="width:24%">Feature</th><th>Behaviour</th></tr>
+    <tr><td>Hero 2-step reveal</td><td>Track height 240vh (210vh mobile) with sticky 100vh stage. Opens on clean infrastructure video + series mark; scroll &gt; 60px reveals descriptor &amp; proposition; scroll &gt; 240px reveals edition selector shortcut + CTAs. Respects <code>prefers-reduced-motion</code> (shows static poster + full text immediately).</td></tr>
+    <tr><td>Editions stage</td><td>Region tabs (Southeast Asia, Middle East, India) filter city sub-tabs; prev/next arrows (hidden ≤768px), pagination dots, and touch swipe (&gt;45px). Smooth 0.4s opacity/translate transition.</td></tr>
+    <tr><td>4 Pillars matrix</td><td>Interactive cards/tabs for the 4 Core Content Pillars; clicking/tapping expands full technical coverage list while keeping the 5 Cross-Cutting Themes pinned below.</td></tr>
+    <tr><td>Sponsorship explorer</td><td>6-pillar accordion synced to a visual preview stage; click or keyboard Enter selects pillar; 5.2s auto-advance pauses on hover.</td></tr>
+    <tr><td>Enquiry form dock</td><td>HubSpot form hidden inside collapsible drawer by default; clicking any <i>Enquire Now</i> or <i>Request Series Prospectus</i> CTA smoothly scrolls to <code>#register</code>, opens the drawer, and pre-selects the relevant market if triggered from an edition card.</td></tr>
+    <tr><td>Navigation &amp; drawer</td><td>Smooth scroll with 85px offset for anchor links; active section spy. Mobile hamburger toggles full-height Navy drawer with <code>pointer-events:auto</code>; closes on link tap, outside tap, or resize ≥992px.</td></tr>
+  </table>
+</section>
+
+<section id="s10">
+  <h2><span class="n">10</span>Integrations &amp; Tracking</h2>
+  <table>
+    <tr><th style="width:26%">Service</th><th>Configuration</th></tr>
+    <tr><td>Google Tag Manager</td><td>Series GTM container (head script + noscript iframe)</td></tr>
+    <tr><td>Google Search Console</td><td>Domain property verification for <code>aiinfranext.com</code></td></tr>
+    <tr><td>HubSpot (Series Enquiry)</td><td>Embed v2 · Portal <code>2953901</code> · Series Sponsorship &amp; Partnership Form (includes fields for Target Market(s), Buyer Profile / Accounts, and Interest Tier); styled to match Navy/Cloud Wash palette</td></tr>
+    <tr><td>Konfhub (Delegate / Pass)</td><td>Not embedded on series root — handled exclusively on individual edition sites (<code>/apply</code>, <code>/confirm</code>, <code>/business-pass</code>)</td></tr>
+    <tr><td>Social Channel</td><td><b>LinkedIn only:</b> <code>linkedin.com/showcase/ai-infranext</code> (no X, Instagram, Telegram, or YouTube icons on series site)</td></tr>
+  </table>
+</section>
+
+<section id="s11">
+  <h2><span class="n">11</span>SEO, Meta &amp; Icons</h2>
+  <table>
+    <tr><th style="width:26%">Tag</th><th>Value</th></tr>
+    <tr><td><code>&lt;title&gt;</code></td><td>AI InfraNext – The Infrastructure Beneath Enterprise AI | Executive Summit Series</td></tr>
+    <tr><td><code>meta description</code></td><td>AI InfraNext is an executive summit series dedicated to the infrastructure layer beneath enterprise AI: compute, cloud, data centres, power, connectivity, security, and capital. Organised by Trescon.</td></tr>
+    <tr><td>Open Graph</td><td><code>og:title</code> "AI InfraNext | Where AI Infrastructure Meets Enterprise Demand", <code>og:url</code> <code>https://aiinfranext.com/</code>, <code>og:image</code> absolute URL <code>https://aiinfranext.com/assets/img/og-aiinfranext.jpg?v=1</code> (1200×630)</td></tr>
+    <tr><td>Twitter Card</td><td><code>summary_large_image</code> referencing the same absolute <code>og:image</code></td></tr>
+    <tr><td>Structured Data</td><td>JSON-LD <code>Organization</code> (Trescon) + <code>WebSite</code> + <code>EventSeries</code> schema listing active regional editions</td></tr>
+    <tr><td>Favicon Set</td><td>Geometric AI InfraNext mark: <code>/assets/img/favicon.ico?v=1</code>, <code>favicon.svg</code>, <code>favicon-32.png</code>, <code>favicon-192.png</code>, <code>apple-touch-icon.png</code> (180×180)</td></tr>
+  </table>
+</section>
+
+<section id="s12">
+  <h2><span class="n">12</span>Responsive Specification</h2>
+  <table>
+    <tr><th style="width:18%">Breakpoint</th><th>Rules</th></tr>
+    <tr><td>≥ 1280px</td><td>Max container width 1240px (<code>calc(100% − 48px)</code>); 4-column benchmark &amp; pillar grids; 2-column editions stage.</td></tr>
+    <tr><td>≤ 991px</td><td>Hamburger navigation drawer; sponsorship explorer stacks (visual stage 300px on top); 5-constituency grid shifts to 2 columns.</td></tr>
+    <tr><td>≤ 768px</td><td>Containers <code>calc(100% − 24px)</code>; edition stage arrows hidden (touch swipe active); pillar cards stack to 1 column.</td></tr>
+    <tr><td>≤ 575px</td><td>Hero stage 100svh (min 540px), sentence-case H1 28–36px; hero CTAs stack full width; two-door attendance panels stack vertically with clear visual separation.</td></tr>
+  </table>
+  <p>Global: <code>html, body { overflow-x: clip }</code> to eliminate horizontal overflow. Use <code>svh</code> units for sticky hero tracks so mobile browser address bars do not clip CTAs.</p>
+</section>
+
+<section id="s13">
+  <h2><span class="n">13</span>Assets &amp; Performance</h2>
+  <table>
+    <tr><th style="width:30%">Asset</th><th>Spec</th></tr>
+    <tr><td>Hero video</td><td><code>ain-hero-reel.mp4</code> (1080p H.264, faststart, &lt;6 MB, muted loop) + <code>ain-hero-poster.jpg</code> (&lt;220 KB)</td></tr>
+    <tr><td>Edition backgrounds</td><td>1920×820 JPG, architectural/infrastructure skyline photography, q≈0.85 (&lt;280 KB)</td></tr>
+    <tr><td>Series &amp; Edition Logos</td><td>Outlined vector SVG. Lockups follow <code>AI InfraNext | [Market] [Year]</code>. Provide <code>-w.svg</code> (white for Navy) and <code>-b.svg</code> (Navy <code>#132F4B</code> for Cloud Wash).</td></tr>
+    <tr><td>Og:image</td><td>1200×630 JPG (&lt;100 KB), Navy <code>#132F4B</code> background with crisp white series lockup and descriptor</td></tr>
+    <tr><td>Limits</td><td>Cloudflare Pages 25 MB max file limit. All assets referenced via root-relative <code>/assets/…</code> paths.</td></tr>
+  </table>
+</section>
+
+<section id="s14">
+  <h2><span class="n">14</span>QA &amp; Validation</h2>
+  <ul>
+    <li><b>Automated Copy &amp; Compliance Audit:</b> <code>validate-series.js</code> scans rendered HTML for banned strings (<code>"By invitation only"</code>, <code>"AI Infranext"</code>, <code>"AI Infra Next"</code>, <code>"AIN"</code>, <code>"AIIN"</code>, unlabelled capacity metrics, or sponsorship prices) and verifies HTML tag balance.</li>
+    <li><b>Viewport Audit:</b> Headless Chrome verification at 320×680, 360×800, 375×812, 412×915, 768×1024, and 1440×900 — zero horizontal scroll, no clipped text, and full CTA visibility inside sticky stages.</li>
+    <li><b>Interactive &amp; Form Checks:</b> Region/edition tab switching and swipe gestures; HubSpot series enquiry submission; mobile drawer open/close and anchor offset accuracy; reduced-motion fallback check.</li>
+  </ul>
+</section>
+
+<section id="s15">
+  <h2><span class="n">15</span>Conventions &amp; Guardrails (Mandatory)</h2>
+  <p>Derived directly from the <b>AI InfraNext Global Messaging &amp; Commercial Execution Reference</b>. Breaking any of these rules invalidates the build:</p>
+  <ul>
+    <li><b>Typography &amp; Naming:</b> Always write <b>AI InfraNext</b> as a closed-up compound with an internal capital <b>N</b>. Never write <i>"AI Infranext"</i>, <i>"AI Infra Next"</i>, or <i>"AI INFRANEXT"</i> in body text. Never abbreviate to <i>AIN</i>, <i>AIIN</i>, or <i>InfraNext</i> alone. Never place <i>"the"</i> before AI InfraNext. Use UK English spellings and sentence case throughout.</li>
+    <li><b>Core Brand Asset Separation:</b> Keep the four verbal assets distinct — Descriptor (<i>"The infrastructure beneath enterprise AI"</i>), Commercial Proposition (<i>"Where AI infrastructure meets enterprise demand"</i>), Brand Line (<i>"[Market]'s AI build, decided here"</i>), and Thesis (<i>"From announced to operational"</i>). Never blend them into one sentence.</li>
+    <li><b>Two-Door Attendance Rule:</b> Never use <i>"By invitation only"</i> anywhere on the site. <i>"By invitation"</i> must always travel with the qualified audience it applies to (senior enterprise, public-sector, and selected infrastructure-capital delegates classified by mandate).</li>
+    <li><b>World AI Show Lineage Rule:</b> Never describe AI InfraNext as a track, stream, or spin-off of World AI Show. World AI Show credentials (48 editions, 4 continents, 42,000+ C-level executives) appear strictly in Section 09 as Trescon's organisational track record.</li>
+    <li><b>Sovereignty Guardrail:</b> Sovereignty is an agenda theme (Pillar 3), never the series identity or headline posture. Frame markets as domestic enterprise and national capability building trusted infrastructure <i>together with</i> the global technology ecosystem.</li>
+    <li><b>Capacity &amp; Commercial Confidentiality:</b> Every infrastructure capacity figure displayed on edition cards must carry an explicit status label (<i>operational, secured, contracted, announced, planned, targeted</i>) and plain-text source (never a hyperlink). Never display sponsorship pricing on the website, and never list prospective sponsors before contracts are signed.</li>
+    <li><b>Consent Qualifier:</b> Any mention of delegate lists or profiles in sponsorship copy must explicitly include the consent qualifier.</li>
+  </ul>
+</section>
+
+<section id="s16">
+  <h2><span class="n">16</span>Open Items</h2>
+  <table>
+    <tr><th style="width:5%">#</th><th>Item</th><th style="width:18%">Owner</th><th style="width:14%">Status</th></tr>
+    <tr><td>1</td><td>Confirm launch dates and edition URLs for Malaysia, Singapore, UAE, Saudi Arabia, and India 2027 editions</td><td>Series Production / Commercial</td><td><span class="tag warn">Pending</span></td></tr>
+    <tr><td>2</td><td>Finalise series hero video reel (<code>ain-hero-reel.mp4</code>) and poster frame</td><td>Branding / Creative</td><td><span class="tag warn">Pending</span></td></tr>
+    <tr><td>3</td><td>Provision dedicated HubSpot Series Enquiry form ID on Portal <code>2953901</code></td><td>Marketing Ops</td><td><span class="tag info">In Progress</span></td></tr>
+    <tr><td>4</td><td>Screen initial monochrome ecosystem logos against active commercial sponsorship pipeline before publication</td><td>Marketing Director</td><td><span class="tag warn">Required</span></td></tr>
+    <tr><td>5</td><td>Configure Cloudflare Worker route prefixes for <code>/indonesia/*</code> and upcoming regional microsites</td><td>Web Engineering</td><td><span class="tag info">Scheduled</span></td></tr>
+  </table>
+</section>
+
+<section id="s17">
+  <h2><span class="n">17</span>Change Log</h2>
+  <table>
+    <tr><th style="width:14%">Version / Date</th><th>Change</th></tr>
+    <tr><td><code>v1.0 · 26 Nov 2026</code></td><td>Initial AI InfraNext Global Series Website Build Specification created, adapting the modular series hub architecture to the AI InfraNext Brand Kit palette (<code>#132F4B</code> Navy / <code>#1F6FB2</code> Accent / <code>#F6F9FC</code> Wash) and Global Messaging &amp; Commercial Playbook.</td></tr>
+  </table>
+</section>
+
+</main>
+</div>
+<footer>AI InfraNext Series Website · Build Specification v1.0 · Prepared 26 November 2026 · Organised by Trescon</footer>
+</body>
+</html>
