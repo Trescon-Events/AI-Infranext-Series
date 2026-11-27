@@ -925,20 +925,22 @@ a, a:hover, a:focus, a:active {
   border: 1px solid var(--line-dark);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-  display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  min-height: 480px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
   position: relative;
+  min-height: 500px;
   transition: opacity 0.4s var(--transition);
 }
 
 .ain-edition-info {
-  padding: 44px;
+  position: relative;
+  z-index: 2;
+  padding: 44px 48px;
+  max-width: 680px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 2;
+  min-height: 500px;
 }
 
 .ain-edition-lockup {
@@ -1077,26 +1079,37 @@ a, a:hover, a:focus, a:active {
 }
 
 .ain-edition-visual {
-  position: relative;
-  background: var(--navy-deep);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
   overflow: hidden;
-  min-height: 320px;
 }
 
 .ain-edition-visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.85;
+  object-position: right center;
+  opacity: 0.95;
 }
 
 .ain-edition-visual-scrim {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, var(--navy-surface) 0%, transparent 40%, rgba(11, 30, 51, 0.4) 100%);
+  inset: 0;
+  background:
+    /* Right side edge shadow */
+    linear-gradient(270deg, rgba(11, 30, 51, 0.95) 0%, rgba(11, 30, 51, 0.55) 14%, rgba(11, 30, 51, 0.15) 30%, transparent 48%),
+    /* Top & bottom subtle frame vignette */
+    linear-gradient(180deg, rgba(11, 30, 51, 0.5) 0%, transparent 14%, transparent 84%, rgba(11, 30, 51, 0.65) 100%),
+    /* Left side dark backing for typography & metrics */
+    linear-gradient(90deg, #0B1E33 0%, rgba(11, 30, 51, 0.98) 46%, rgba(11, 30, 51, 0.82) 64%, rgba(11, 30, 51, 0.3) 82%, transparent 100%);
+  box-shadow: inset -25px 0 40px rgba(11, 30, 51, 0.85);
 }
 
 /* =========================================================================
@@ -2153,8 +2166,12 @@ a, a:hover, a:focus, a:active {
   .ain-benchmark-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .ain-edition-stage {
-    grid-template-columns: 1fr;
+  .ain-edition-info {
+    max-width: 100%;
+    padding: 36px 24px;
+  }
+  .ain-edition-visual-scrim {
+    background: linear-gradient(180deg, rgba(11, 30, 51, 0.88) 0%, rgba(11, 30, 51, 0.85) 100%);
   }
   .ain-pillars-grid {
     grid-template-columns: 1fr;
