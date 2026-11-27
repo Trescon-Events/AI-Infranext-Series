@@ -281,7 +281,7 @@
             </div>
 
             <div class="ain-edition-actions">
-              <a href="/indonesia/" class="btn-ain-primary" id="editionSiteBtn">Visit Edition Site</a>
+              <a href="/indonesia/" class="btn-ain-primary" id="editionSiteBtn">Visit Website</a>
               <a href="#register" class="btn-ain-secondary" id="editionEnquireBtn">Enquire Now</a>
             </div>
           </div>
@@ -924,7 +924,7 @@
         var siteBtn = document.getElementById('editionSiteBtn');
         if (edition.websiteUrl && edition.websiteUrl.length > 0) {
           siteBtn.href = edition.websiteUrl;
-          siteBtn.textContent = 'Visit Edition Site';
+          siteBtn.textContent = 'Visit Website';
           siteBtn.classList.remove('disabled');
           siteBtn.removeAttribute('disabled');
         } else {
