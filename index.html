@@ -31,7 +31,7 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/infranext-theme.css" />
+  <link rel="stylesheet" href="assets/css/infranext-theme.css?v=2" />
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -242,7 +242,7 @@
             <div>
               <div class="ain-edition-lockup" id="editionLockup">AI InfraNext | Indonesia 2026</div>
               <div class="ain-edition-brandline" id="editionBrandline">Indonesia's AI build, decided here</div>
-              <div class="ain-edition-meta-pills" id="editionMetaPills">
+              <div class="ain-edition-meta-pills" id="editionMetaPills" style="display: flex; flex-wrap: nowrap; gap: 10px; white-space: nowrap; overflow-x: auto;">
                 <span class="ain-edition-meta-pill">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                   <span id="editionDates">24–25 Nov 2026</span>
@@ -641,64 +641,18 @@
             </p>
           </div>
 
-          <!-- Fallback Interactive Enquiry Form (HubSpot Ready) -->
-          <form id="ainEnquiryForm" onsubmit="handleEnquirySubmit(event)">
-            <div class="row">
-              <div class="col-md-6 ain-form-group">
-                <label class="ain-form-label" for="formName">Full Name *</label>
-                <input type="text" id="formName" class="ain-input" placeholder="e.g. Sarah Jenkins" required />
-              </div>
-              <div class="col-md-6 ain-form-group">
-                <label class="ain-form-label" for="formEmail">Corporate Email *</label>
-                <input type="email" id="formEmail" class="ain-input" placeholder="e.g. s.jenkins@company.com" required />
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6 ain-form-group">
-                <label class="ain-form-label" for="formCompany">Company / Organisation *</label>
-                <input type="text" id="formCompany" class="ain-input" placeholder="e.g. Pacific Compute Systems" required />
-              </div>
-              <div class="col-md-6 ain-form-group">
-                <label class="ain-form-label" for="formJobTitle">Job Title *</label>
-                <input type="text" id="formJobTitle" class="ain-input" placeholder="e.g. VP Infrastructure" required />
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6 ain-form-group">
-                <label class="ain-form-label" for="formMarket">Target Market Edition *</label>
-                <select id="formMarket" class="ain-select">
-                  <option value="All Editions">Global / Multi-Edition Series Package</option>
-                  <option value="Indonesia 2026">Indonesia 2026 (Jakarta)</option>
-                  <option value="Malaysia 2027">Malaysia 2027 (Kuala Lumpur)</option>
-                </select>
-              </div>
-              <div class="col-md-6 ain-form-group">
-                <label class="ain-form-label" for="formTier">Primary Objective *</label>
-                <select id="formTier" class="ain-select">
-                  <option value="Lead Series Sponsorship">Lead Series Sponsorship &amp; Plenary Keynote</option>
-                  <option value="Closed-Door CXO Boardroom">Closed-Door CXO Boardroom Hosting</option>
-                  <option value="Technology Showcase">Curated Technology Showcase Booth</option>
-                  <option value="Delegate Attendance">Enterprise Delegate Application</option>
-                  <option value="Media & Ecosystem">Media &amp; Ecosystem Partnership</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="ain-form-group">
-              <label class="ain-form-label" for="formMessage">Specific Requirements or Target Accounts</label>
-              <textarea id="formMessage" class="ain-textarea" rows="3" placeholder="Tell us about your strategic focus or target accounts..."></textarea>
-            </div>
-
-            <div class="text-center mt-4">
-              <button type="submit" class="btn-ain-primary" style="padding: 14px 36px; font-size: 15.5px; width: 100%; max-width: 320px;" id="enquirySubmitBtn">
-                Submit Series Enquiry
-              </button>
-            </div>
-
-            <div id="formFeedback" style="display: none; text-align: center; margin-top: 18px; padding: 12px; border-radius: 6px; font-size: 14px;"></div>
-          </form>
+          <!-- HubSpot Series Enquiry Form Embed (Portal 2953901) -->
+          <div id="hubspotFormTarget" class="ain-hubspot-container">
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+              hbspt.forms.create({
+                portalId: "2953901",
+                formId: "4b66d90c-992c-42c9-a5c0-6eb93a8819bd",
+                region: "na1",
+                target: "#hubspotFormTarget"
+              });
+            </script>
+          </div>
         </div>
       </div>
     </section>
@@ -1270,25 +1224,6 @@
       renderDots();
       updateSlidePosition();
     }
-
-    // 8. Series Enquiry Form Submission Handler
-    window.handleEnquirySubmit = function (event) {
-      event.preventDefault();
-      var btn = document.getElementById('enquirySubmitBtn');
-      var feedback = document.getElementById('formFeedback');
-
-      btn.disabled = true;
-      btn.textContent = 'Submitting Enquiry...';
-
-      setTimeout(function () {
-        btn.textContent = 'Enquiry Received';
-        btn.style.backgroundColor = 'var(--green)';
-        feedback.style.display = 'block';
-        feedback.style.backgroundColor = 'var(--green-bg)';
-        feedback.style.color = 'var(--green)';
-        feedback.textContent = 'Thank you for your interest. A member of our commercial partnerships team will be in touch shortly.';
-      }, 1000);
-    };
 
     // Initialise All Modules on DOMContentLoaded
     document.addEventListener('DOMContentLoaded', function () {
