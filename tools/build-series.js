@@ -42,7 +42,7 @@ function copyRecursiveSync(src, dest) {
 }
 
 // 4. Copy files to dist
-const itemsToCopy = ['index.html', 'why-partner.html', '_redirects', 'assets', 'insights'];
+const itemsToCopy = ['index.html', '_redirects', 'assets', 'insights'];
 itemsToCopy.forEach(item => {
   const src = path.join(rootDir, item);
   const dest = path.join(distDir, item);
