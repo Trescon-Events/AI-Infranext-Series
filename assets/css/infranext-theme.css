@@ -232,10 +232,11 @@ a, a:hover, a:focus, a:active {
 }
 
 .section-light.with-grid {
+  background-color: #F8FAFC;
   background-image: 
-    linear-gradient(to right, rgba(214, 224, 233, 0.45) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(214, 224, 233, 0.45) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(to right, rgba(0, 105, 184, 0.075) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 105, 184, 0.075) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 /* Top Scroll Progress Bar */
@@ -574,6 +575,189 @@ a, a:hover, a:focus, a:active {
 /* =========================================================================
    Section 2: The Execution Layer (Cards & Thesis)
    ========================================================================= */
+.ain-execution-split {
+  display: grid;
+  grid-template-columns: 1.85fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 24px;
+}
+
+.ain-thesis-featured-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 3px solid #0B1E33;
+  border-radius: 16px;
+  padding: 38px 42px;
+  box-shadow: 0 10px 30px rgba(11, 30, 51, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.ain-thesis-featured-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(11, 30, 51, 0.1);
+}
+
+.ain-thesis-featured-content {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+}
+
+.ain-thesis-featured-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: #0B1E33;
+  line-height: 1.35;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+
+.ain-thesis-featured-text {
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.68;
+  margin: 0;
+}
+
+.ain-thesis-rack-wrap {
+  position: absolute;
+  right: 18px;
+  bottom: 8px;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ain-thesis-rack-art {
+  width: 175px;
+  height: auto;
+  max-height: 90%;
+}
+
+.ain-contrast-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.ain-contrast-card {
+  flex: 1;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.ain-contrast-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  border-color: #CBD5E1;
+}
+
+.ain-contrast-badge {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.ain-contrast-badge.cross {
+  color: #DC2626;
+}
+
+.ain-contrast-badge.check {
+  color: #16A34A;
+}
+
+.ain-contrast-text {
+  flex: 1;
+}
+
+.ain-contrast-title {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: #0B1E33;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.ain-contrast-desc {
+  font-size: 13.5px;
+  color: #64748B;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Benchmark Grid (Bottom Row) */
+.ain-benchmark-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.ain-benchmark-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-top: 5px solid #2B59C3;
+  border-radius: 16px;
+  padding: 28px 28px 26px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.ain-benchmark-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  border-color: #CBD5E1;
+  border-top-color: #2B59C3;
+}
+
+.ain-benchmark-num {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: #0B1E33;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 10px;
+}
+
+.ain-benchmark-label {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0B1E33;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.ain-benchmark-sub {
+  font-size: 13.5px;
+  color: #64748B;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Legacy aliases for backward compatibility */
 .ain-thesis-card {
   background: var(--paper);
   border: 1px solid var(--line);
@@ -582,12 +766,6 @@ a, a:hover, a:focus, a:active {
   box-shadow: 0 4px 20px rgba(19, 47, 75, 0.04);
   margin-bottom: 40px;
   transition: all var(--transition);
-}
-
-.ain-thesis-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(31, 111, 178, 0.4);
-  box-shadow: 0 16px 36px rgba(19, 47, 75, 0.09);
 }
 
 .ain-thesis-contrast {
@@ -609,69 +787,6 @@ a, a:hover, a:focus, a:active {
   position: absolute;
   left: 0;
   top: 2px;
-}
-
-.ain-benchmark-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.ain-benchmark-card {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  padding: 28px 24px;
-  transition: all var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.ain-benchmark-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--accent);
-  opacity: 0;
-  transition: opacity var(--transition);
-}
-
-.ain-benchmark-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent);
-  box-shadow: 0 16px 36px rgba(31, 111, 178, 0.14), 0 0 0 1px rgba(31, 111, 178, 0.2);
-}
-
-.ain-benchmark-card:hover::before {
-  opacity: 1;
-}
-
-.ain-benchmark-num {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 38px;
-  font-weight: 800;
-  color: var(--navy);
-  line-height: 1.1;
-  font-variant-numeric: tabular-nums;
-  margin-bottom: 8px;
-}
-
-.ain-benchmark-label {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 6px;
-}
-
-.ain-benchmark-sub {
-  font-size: 13.5px;
-  color: var(--grey);
-  line-height: 1.45;
-  margin: 0;
 }
 
 /* =========================================================================
@@ -1901,7 +2016,27 @@ a, a:hover, a:focus, a:active {
   }
 }
 
+@media (max-width: 991px) {
+  .ain-execution-split {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .ain-contrast-stack {
+    gap: 16px;
+  }
+  .ain-thesis-featured-card {
+    padding: 32px 24px;
+  }
+  .ain-thesis-rack-wrap {
+    opacity: 0.1;
+    right: 10px;
+  }
+}
+
 @media (max-width: 767px) {
+  .ain-thesis-rack-wrap {
+    display: none;
+  }
   .section-dark, .section-dark-deep, .section-light {
     padding: 68px 0;
   }
