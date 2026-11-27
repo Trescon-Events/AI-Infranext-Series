@@ -1402,63 +1402,85 @@ a, a:hover, a:focus, a:active {
 }
 
 .ain-constituency-card {
-  background: var(--navy-surface);
-  border: 1px solid var(--line-dark);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+  background: linear-gradient(180deg, rgba(14, 36, 58, 0.95) 0%, rgba(9, 24, 40, 0.98) 100%);
+  border: 1px solid rgba(159, 196, 224, 0.18);
+  border-radius: var(--radius-lg, 16px);
+  padding: 34px 28px 36px;
   transition: all var(--transition);
   display: flex;
   flex-direction: column;
   height: 100%;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  position: relative;
+  overflow: hidden;
+}
+
+.ain-constituency-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.7), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .ain-constituency-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  transform: translateY(-6px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45), 0 0 24px rgba(56, 189, 248, 0.12);
 }
 
-.ain-constituency-img-wrap {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-  background: var(--navy-deep);
+.ain-constituency-card:hover::before {
+  opacity: 1;
 }
 
-.ain-constituency-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.ain-constituency-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }
 
-.ain-constituency-card:hover .ain-constituency-img {
-  transform: scale(1.05);
+.ain-constituency-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: rgba(31, 111, 178, 0.18);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38BDF8;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.ain-constituency-card:hover .ain-constituency-icon-box {
+  background: rgba(31, 111, 178, 0.35);
+  border-color: #38BDF8;
+  color: #FFFFFF;
+  transform: scale(1.06);
+  box-shadow: 0 0 22px rgba(56, 189, 248, 0.35);
 }
 
 .ain-constituency-badge {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  background: rgba(11, 30, 51, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(159, 196, 224, 0.35);
-  color: var(--tint);
+  background: rgba(159, 196, 224, 0.08);
+  border: 1px solid rgba(159, 196, 224, 0.22);
+  color: var(--tint, #9FC4E0);
   font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: var(--radius-pill);
   text-transform: uppercase;
 }
 
 .ain-constituency-body {
-  padding: 24px 22px 28px;
+  padding: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -1466,17 +1488,18 @@ a, a:hover, a:focus, a:active {
 
 .ain-constituency-title {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
   color: #FFFFFF;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   line-height: 1.25;
 }
 
 .ain-constituency-profiles {
-  font-size: 14px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14.5px;
   color: #C9DCEC;
-  line-height: 1.6;
+  line-height: 1.65;
   margin: 0;
 }
 
