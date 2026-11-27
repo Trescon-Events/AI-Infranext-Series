@@ -927,7 +927,7 @@ a, a:hover, a:focus, a:active {
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.3fr 0.7fr;
   min-height: 480px;
   position: relative;
   transition: opacity 0.4s var(--transition);
@@ -960,21 +960,31 @@ a, a:hover, a:focus, a:active {
 
 .ain-edition-meta-pills {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 10px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   margin-bottom: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ain-edition-meta-pills::-webkit-scrollbar {
+  display: none;
 }
 
 .ain-edition-meta-pill {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--line-dark);
-  padding: 6px 14px;
+  padding: 6px 12px;
   border-radius: var(--radius-sm);
   font-size: 13px;
   color: #E2ECF5;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .ain-edition-desc {
