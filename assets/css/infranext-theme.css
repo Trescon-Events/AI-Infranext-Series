@@ -981,7 +981,47 @@ a, a:hover, a:focus, a:active {
   font-size: 15px;
   color: #C9DCEC;
   line-height: 1.6;
-  margin-bottom: 32px;
+  margin-bottom: 0;
+}
+
+.ain-edition-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 22px 0 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(159, 196, 224, 0.16);
+}
+
+.ain-edition-metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.ain-edition-metric-num {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ain-edition-metric-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #9FC4E0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 575px) {
+  .ain-edition-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 12px;
+  }
 }
 
 .ain-edition-stats-box {
