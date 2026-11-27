@@ -1349,37 +1349,6 @@ a, a:hover, a:focus, a:active {
 .ain-ecosystem-section {
   position: relative;
   overflow: hidden;
-  background: var(--navy-deep);
-}
-
-.ain-ecosystem-media-wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.ain-ecosystem-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  opacity: 0.55;
-  filter: saturate(1.15) contrast(1.08);
-}
-
-.ain-ecosystem-video-scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    /* Top & bottom smooth gradient blend to preserve dark site palette */
-    linear-gradient(180deg, rgba(7, 18, 32, 0.96) 0%, rgba(11, 30, 51, 0.45) 20%, rgba(11, 30, 51, 0.45) 80%, rgba(7, 18, 32, 0.96) 100%),
-    /* Radial backdrop to emphasize center titles and slider cards */
-    radial-gradient(ellipse at 50% 30%, rgba(11, 30, 51, 0.35) 0%, rgba(7, 18, 32, 0.88) 100%);
 }
 
 .ain-ecosystem-tech-corner {
