@@ -575,6 +575,18 @@ a, a:hover, a:focus, a:active {
 /* =========================================================================
    Section 2: The Execution Layer (Cards & Thesis)
    ========================================================================= */
+.ain-execution-title {
+  font-size: clamp(24px, 2.6vw, 38px);
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 992px) {
+  .ain-execution-title {
+    white-space: nowrap;
+  }
+}
+
 .ain-execution-split {
   display: grid;
   grid-template-columns: 1.85fr 1fr;
