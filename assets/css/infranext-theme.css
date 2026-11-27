@@ -575,6 +575,24 @@ a, a:hover, a:focus, a:active {
 /* =========================================================================
    Section 2: The Execution Layer (Cards & Thesis)
    ========================================================================= */
+.ain-execution-section {
+  position: relative;
+  overflow: hidden;
+  background-color: #F8FAFC;
+}
+
+.ain-execution-wireframe-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('../img/brand/execution-wireframe-bg.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+}
+
 .ain-execution-title {
   font-size: clamp(24px, 2.6vw, 38px);
   margin-bottom: 16px;
@@ -587,133 +605,114 @@ a, a:hover, a:focus, a:active {
   }
 }
 
-.ain-execution-split {
-  display: grid;
-  grid-template-columns: 1.85fr 1fr;
-  gap: 24px;
+/* Unified Single Thesis Card */
+.ain-unified-thesis-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(0, 105, 184, 0.18);
+  border-radius: 18px;
+  padding: 38px 42px;
+  box-shadow: 0 12px 36px rgba(0, 105, 184, 0.06);
+  display: flex;
   align-items: stretch;
+  gap: 36px;
   margin-bottom: 24px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
-.ain-thesis-featured-card {
-  position: relative;
-  background: #FFFFFF;
-  border: 3px solid #0B1E33;
-  border-radius: 16px;
-  padding: 38px 42px;
-  box-shadow: 0 10px 30px rgba(11, 30, 51, 0.06);
+.ain-unified-thesis-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 42px rgba(0, 105, 184, 0.09);
+  border-color: rgba(0, 105, 184, 0.28);
+}
+
+.ain-unified-thesis-left {
+  flex: 1.4;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
-  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.ain-thesis-featured-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 36px rgba(11, 30, 51, 0.1);
-}
-
-.ain-thesis-featured-content {
-  position: relative;
-  z-index: 2;
-  max-width: 580px;
-}
-
-.ain-thesis-featured-title {
+.ain-unified-thesis-title {
   font-family: var(--font-heading);
-  font-size: 22px;
+  font-size: 21.5px;
   font-weight: 700;
   color: #0B1E33;
   line-height: 1.35;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   letter-spacing: -0.01em;
 }
 
-.ain-thesis-featured-text {
+.ain-unified-thesis-desc {
   color: #334155;
-  font-size: 15px;
+  font-size: 14.5px;
   line-height: 1.68;
   margin: 0;
 }
 
-.ain-thesis-rack-wrap {
-  position: absolute;
-  right: 18px;
-  bottom: 8px;
-  top: 8px;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.ain-thesis-rack-art {
-  width: 175px;
-  height: auto;
-  max-height: 90%;
-}
-
-.ain-contrast-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: space-between;
-}
-
-.ain-contrast-card {
-  flex: 1;
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 16px;
-  padding: 24px 28px;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-}
-
-.ain-contrast-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-  border-color: #CBD5E1;
-}
-
-.ain-contrast-badge {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.1;
-  margin-top: 1px;
+.ain-unified-thesis-divider {
+  width: 1px;
+  background: rgba(0, 105, 184, 0.15);
+  align-self: stretch;
   flex-shrink: 0;
 }
 
-.ain-contrast-badge.cross {
-  color: #DC2626;
-}
-
-.ain-contrast-badge.check {
-  color: #16A34A;
-}
-
-.ain-contrast-text {
+.ain-unified-thesis-right {
   flex: 1;
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
-.ain-contrast-title {
+.ain-contrast-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ain-contrast-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
   font-family: var(--font-heading);
-  font-size: 16px;
+  font-size: 14.5px;
   font-weight: 700;
-  color: #0B1E33;
-  margin-bottom: 4px;
   line-height: 1.3;
 }
 
-.ain-contrast-desc {
-  font-size: 13.5px;
+.ain-contrast-header.negative .ain-contrast-sym {
+  color: #DC2626;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.ain-contrast-header.negative .ain-contrast-tag {
+  color: #B45309;
+}
+
+.ain-contrast-header.positive .ain-contrast-sym {
+  color: #16A34A;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.ain-contrast-header.positive .ain-contrast-tag {
+  color: #15803D;
+}
+
+.ain-contrast-info {
+  font-size: 13px;
   color: #64748B;
   line-height: 1.5;
-  margin: 0;
+  margin-top: 8px;
+  margin-bottom: 0;
 }
 
 /* Benchmark Grid (Bottom Row) */
@@ -725,32 +724,32 @@ a, a:hover, a:focus, a:active {
 }
 
 .ain-benchmark-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-top: 5px solid #2B59C3;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(0, 105, 184, 0.18);
   border-radius: 16px;
   padding: 28px 28px 26px;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 8px 24px rgba(0, 105, 184, 0.05);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
   position: relative;
   overflow: hidden;
 }
 
 .ain-benchmark-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
-  border-color: #CBD5E1;
-  border-top-color: #2B59C3;
+  box-shadow: 0 14px 32px rgba(0, 105, 184, 0.1);
+  border-color: rgba(0, 105, 184, 0.32);
 }
 
 .ain-benchmark-num {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 40px;
+  font-size: 44px;
   font-weight: 800;
-  color: #0B1E33;
+  color: #0069B4;
   line-height: 1;
   font-variant-numeric: tabular-nums;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .ain-benchmark-label {
@@ -767,6 +766,33 @@ a, a:hover, a:focus, a:active {
   color: #64748B;
   line-height: 1.5;
   margin: 0;
+}
+
+@media (max-width: 991px) {
+  .ain-unified-thesis-card {
+    flex-direction: column;
+    padding: 30px 24px;
+    gap: 24px;
+  }
+  .ain-unified-thesis-divider {
+    width: 100%;
+    height: 1px;
+  }
+  .ain-unified-thesis-right {
+    flex-direction: row;
+    gap: 20px;
+  }
+  .ain-benchmark-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ain-unified-thesis-right {
+    flex-direction: column;
+    gap: 16px;
+  }
 }
 
 /* Legacy aliases for backward compatibility */

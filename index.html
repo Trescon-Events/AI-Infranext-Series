@@ -163,8 +163,9 @@
     </section>
 
     <!-- Section 2: The Execution Layer -->
-    <section class="section-light with-grid" id="about">
-      <div class="container">
+    <section class="section-light ain-execution-section" id="about">
+      <div class="ain-execution-wireframe-bg"></div>
+      <div class="container" style="position: relative; z-index: 2;">
         <div class="row justify-content-center text-center">
           <div class="col-12">
             <h2 class="section-title ain-execution-title" style="color: var(--navy);">Not an AI conference. Not a data centre show.</h2>
@@ -174,89 +175,32 @@
           </div>
         </div>
 
-        <!-- Upper Layout: Thesis Card (Left) + Contrast Stack (Right) -->
-        <div class="ain-execution-split mb-4">
-          <!-- Left: Featured Thesis Card -->
-          <div class="ain-thesis-featured-card">
-            <div class="ain-thesis-featured-content">
-              <h3 class="ain-thesis-featured-title">From announced to operational: Bridging the gap between AI ambition and physical capability</h3>
-              <p class="ain-thesis-featured-text">
-                As generative AI, autonomous agents, and foundation models scale into core enterprise workflows, the bottleneck shifts from algorithms to physical execution: high-density power access, liquid-cooled data halls, low-latency interconnects, and sovereign data boundaries. AI InfraNext brings together the executive leaders who build, power, secure, and finance this mission-critical foundation.
-              </p>
-            </div>
-            <!-- Isometric Server Rack Watermark -->
-            <div class="ain-thesis-rack-wrap" aria-hidden="true">
-              <svg class="ain-thesis-rack-art" viewBox="0 0 170 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g stroke="#0B1E33" stroke-width="1.25" opacity="0.16">
-                  <!-- Rear Rack -->
-                  <path d="M78 20 L118 6 L150 18 L110 32 Z" fill="#F8FAFC" />
-                  <path d="M78 20 V165 L110 178 V32" />
-                  <path d="M150 18 V162 L110 178" />
-                  <path d="M118 6 V150 L150 162" />
-                  <line x1="78" y1="45" x2="110" y2="58" stroke-dasharray="2 2" />
-                  <line x1="78" y1="75" x2="110" y2="88" stroke-dasharray="2 2" />
-                  <line x1="78" y1="105" x2="110" y2="118" stroke-dasharray="2 2" />
-                  <line x1="78" y1="135" x2="110" y2="148" stroke-dasharray="2 2" />
-                  
-                  <!-- Front Rack Frame -->
-                  <path d="M22 42 L66 26 L104 40 L60 56 Z" fill="#FFFFFF" stroke-width="1.5" />
-                  <path d="M22 42 V186 L60 202 V56 Z" fill="#FFFFFF" stroke-width="1.5" />
-                  <path d="M104 40 V184 L60 202" stroke-width="1.5" />
-                  <path d="M66 26 V170 L104 184" stroke-width="1.5" />
-                  
-                  <!-- Rack Units / Slots on Front Face -->
-                  <path d="M26 62 L56 73" />
-                  <path d="M26 76 L56 87" />
-                  <path d="M26 90 L56 101" />
-                  <path d="M26 104 L56 115" />
-                  <path d="M26 118 L56 129" />
-                  <path d="M26 132 L56 143" />
-                  <path d="M26 146 L56 157" />
-                  <path d="M26 160 L56 171" />
-                  <path d="M26 174 L56 185" />
-                  
-                  <!-- LED status dots & handles -->
-                  <circle cx="31" cy="70" r="1.2" fill="#0B1E33" />
-                  <circle cx="35" cy="71.5" r="1.2" fill="#0B1E33" />
-                  <circle cx="31" cy="98" r="1.2" fill="#0B1E33" />
-                  <circle cx="35" cy="99.5" r="1.2" fill="#0B1E33" />
-                  <circle cx="31" cy="126" r="1.2" fill="#0B1E33" />
-                  <circle cx="35" cy="127.5" r="1.2" fill="#0B1E33" />
-                  <circle cx="31" cy="154" r="1.2" fill="#0B1E33" />
-                  <circle cx="35" cy="155.5" r="1.2" fill="#0B1E33" />
-                  
-                  <!-- Right Side Ventilation Slots -->
-                  <line x1="68" y1="74" x2="96" y2="63" stroke-width="0.8" />
-                  <line x1="68" y1="84" x2="96" y2="73" stroke-width="0.8" />
-                  <line x1="68" y1="94" x2="96" y2="83" stroke-width="0.8" />
-                  <line x1="68" y1="104" x2="96" y2="93" stroke-width="0.8" />
-                  <line x1="68" y1="114" x2="96" y2="103" stroke-width="0.8" />
-                  <line x1="68" y1="124" x2="96" y2="113" stroke-width="0.8" />
-                  <line x1="68" y1="134" x2="96" y2="123" stroke-width="0.8" />
-                  <line x1="68" y1="144" x2="96" y2="133" stroke-width="0.8" />
-                  <line x1="68" y1="154" x2="96" y2="143" stroke-width="0.8" />
-                  <line x1="68" y1="164" x2="96" y2="153" stroke-width="0.8" />
-                </g>
-              </svg>
-            </div>
+        <!-- Unified Featured Card -->
+        <div class="ain-unified-thesis-card">
+          <div class="ain-unified-thesis-left">
+            <h3 class="ain-unified-thesis-title">From announced to operational: Bridging the gap between AI ambition and physical capability</h3>
+            <p class="ain-unified-thesis-desc">
+              As generative AI, autonomous agents, and foundation models scale into core enterprise workflows, the bottleneck shifts from algorithms to physical execution: high-density power access, liquid-cooled data halls, low-latency interconnects, and sovereign data boundaries. AI InfraNext brings together the executive leaders who build, power, secure, and finance this mission-critical foundation.
+            </p>
           </div>
 
-          <!-- Right: Stacked Contrast Cards -->
-          <div class="ain-contrast-stack">
-            <div class="ain-contrast-card">
-              <span class="ain-contrast-badge cross" aria-hidden="true">&#x2715;</span>
-              <div class="ain-contrast-text">
-                <h4 class="ain-contrast-title">Not Generic AI Use-Cases</h4>
-                <p class="ain-contrast-desc">We do not debate prompts or superficial demos.</p>
+          <div class="ain-unified-thesis-divider"></div>
+
+          <div class="ain-unified-thesis-right">
+            <div class="ain-contrast-col">
+              <div class="ain-contrast-header negative">
+                <span class="ain-contrast-sym" aria-hidden="true">&#x2715;</span>
+                <span class="ain-contrast-tag">Not Generic AI Use-Cases</span>
               </div>
+              <p class="ain-contrast-info">We do not debate prompts or superficial demos.</p>
             </div>
 
-            <div class="ain-contrast-card">
-              <span class="ain-contrast-badge check" aria-hidden="true">&#x2713;</span>
-              <div class="ain-contrast-text">
-                <h4 class="ain-contrast-title">Operational Infrastructure</h4>
-                <p class="ain-contrast-desc">Power grids, GPU factories, neoclouds, and sovereign fabric.</p>
+            <div class="ain-contrast-col">
+              <div class="ain-contrast-header positive">
+                <span class="ain-contrast-sym" aria-hidden="true">&#x2713;</span>
+                <span class="ain-contrast-tag">Operational Infrastructure</span>
               </div>
+              <p class="ain-contrast-info">Power grids, GPU factories, neoclouds, and sovereign fabric.</p>
             </div>
           </div>
         </div>
