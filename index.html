@@ -544,12 +544,12 @@
       <div class="wais-partners-orbital-bg"></div>
       <div class="wais-partners-orbital-scrim"></div>
 
-      <div class="container mb-5 text-center" style="position: relative; z-index: 2;">
+      <div class="container mb-5 text-center ain-reveal-on-scroll" style="position: relative; z-index: 2;">
         <h2 class="section-title text-white">Organisations Who Have Previously Partnered With Us</h2>
       </div>
 
       <!-- Row 1: Moves Right -->
-      <div class="ain-marquee-container mb-4" style="position: relative; z-index: 2;">
+      <div class="ain-marquee-container mb-4 ain-reveal-on-scroll" style="position: relative; z-index: 2;">
         <div class="ain-marquee-track track-right">
           <div class="partner-marquee-item"><img src="assets/img/partners-sponsors/my-mdec.webp" alt="MDEC" class="partner-marquee-logo" loading="lazy"></div>
           <div class="partner-marquee-item"><img src="assets/img/partners-sponsors/id-datalabs-google-cloud.png" alt="Google Cloud" class="partner-marquee-logo" loading="lazy"></div>
@@ -632,7 +632,7 @@
     <!-- Section 8: Series Enquiry -->
     <section class="section-light with-grid" id="register">
       <div class="container">
-        <div class="ain-enquiry-card">
+        <div class="ain-enquiry-card ain-reveal-on-scroll">
           <div class="text-center mb-4">
             <span class="eyebrow on-dark">SERIES SPONSORSHIP &amp; PARTNERSHIP</span>
             <h2 class="section-title text-white">Partner with AI InfraNext</h2>
@@ -708,7 +708,7 @@
       <div class="ain-organiser-orbital-bg"></div>
       <div class="ain-organiser-orbital-scrim"></div>
       <div class="container" style="position: relative; z-index: 2;">
-        <div class="ain-organiser-box">
+        <div class="ain-organiser-box ain-reveal-on-scroll">
           <div class="ain-organiser-grid">
             <div>
               <span class="eyebrow on-dark">ORGANISER</span>
@@ -1297,6 +1297,21 @@
       initSponsorshipExplorer();
       initScrollAndNav();
       handleHeroScroll();
+
+      // Staggered scroll entrance reveal for stacked sections (Renoenergie pattern)
+      var reveals = document.querySelectorAll('.ain-reveal-on-scroll');
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-revealed');
+            }
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+        reveals.forEach(function (el) { obs.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('is-revealed'); });
+      }
     });
 
   })();

@@ -2244,6 +2244,71 @@ a, a:hover, a:focus, a:active {
   }
 }
 
+/* =========================================================================
+   Sticky Card Stacking & Overlapping Curtain Reveal (Renoenergie style)
+   ========================================================================= */
+#editions {
+  position: relative;
+  z-index: 4;
+  border-radius: 32px 32px 0 0;
+  box-shadow: 0 -24px 50px rgba(0, 0, 0, 0.45);
+}
+
+#ecosystem {
+  position: relative;
+  z-index: 5;
+  border-radius: 32px 32px 0 0;
+  box-shadow: 0 -24px 50px rgba(0, 0, 0, 0.45);
+}
+
+@media (min-width: 992px) {
+  /* Section 6: Why Partner pins as a sticky base card */
+  #why-sponsor {
+    position: sticky;
+    top: 72px;
+    z-index: 10;
+    border-radius: 32px 32px 0 0;
+    box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Section 7: Past Partners rolls up directly OVER Why Partner */
+  #partners {
+    position: relative;
+    z-index: 20;
+    border-radius: 32px 32px 0 0;
+    box-shadow: 0 -28px 60px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Section 8: Series Enquiry rolls up directly OVER Past Partners */
+  #register {
+    position: relative;
+    z-index: 30;
+    border-radius: 32px 32px 0 0;
+    box-shadow: 0 -28px 60px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Section 9: Organiser Lineage rolls up directly OVER Series Enquiry */
+  #organiser {
+    position: relative;
+    z-index: 40;
+    border-radius: 32px 32px 0 0;
+    box-shadow: 0 -28px 60px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Staggered entrance animation for incoming stacked sections (Renoenergie translateY 30px + opacity) */
+.ain-reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.ain-reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
