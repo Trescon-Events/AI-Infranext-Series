@@ -1245,6 +1245,47 @@ a, a:hover, a:focus, a:active {
 /* =========================================================================
    Section 5: Who Is In The Room & Two-Door Attendance Model
    ========================================================================= */
+.ain-ecosystem-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.ain-ecosystem-3d-corner {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: clamp(340px, 42vw, 620px);
+  max-width: 65%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.9;
+  mix-blend-mode: screen;
+  transition: opacity 0.4s ease;
+}
+
+.ain-ecosystem-3d-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  mask-image: radial-gradient(circle at 65% 35%, black 45%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 65% 35%, black 45%, transparent 85%);
+}
+
+@media (max-width: 991px) {
+  .ain-ecosystem-3d-corner {
+    width: 280px;
+    top: -10px;
+    right: -10px;
+    opacity: 0.65;
+  }
+}
+
+@media (max-width: 575px) {
+  .ain-ecosystem-3d-corner {
+    display: none;
+  }
+}
+
 /* Constituencies Slider (3 in a row, big cards) */
 .ain-constituencies-slider-wrap {
   position: relative;
